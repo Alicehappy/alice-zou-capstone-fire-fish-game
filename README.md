@@ -12,67 +12,67 @@ Toddlers having short attention span, often struggle with typing accuracy and sp
 
 The app is targeted at toddlers and young kids 24 months - 4 years, especially those looking to improve their typing skills or learn about animals. The user interface will be simple, colorful, and playful, designed to hold the attention of toddlers and young kids but without being overstimulating. Special considerations:
   
-  •The app needs to be intuitive and visually engaging, at the same time without being overstimulating
-  •Kid-friendly language and appealing animations are necessary to keep users engaged.
-  •Provide a rewarding experience for completing tasks (e.g., scoring points).
+    • The app needs to be intuitive and visually engaging, at the same time without being overstimulating
+    • Kid-friendly language and appealing animations are necessary to keep users engaged.
+    • Provide a rewarding experience for completing tasks (e.g., scoring points).
 
 ### Features
 
-1.Home Page:
-  •User enters their name.
-  •User selects between two game modes: the Typing Game or the Animal Selection Game. 
-2.Typing Game:
-  •Home page with a form to enter the user’s name.
-  •Game page where fish swim across the screen with letters. The player types the correct letters, and the fish disappear.
-  •A points system that awards 10 points for each correctly typed letter.
-  •After all fish are gone, the player is taken to a Submit Score page.
-  •A Scoreboard page displays the top scores.
-3.Save Score Page:
-  •Allows users to save their score to the database and proceed to the scoreboard.
-4.Scoreboard Page:
-  •Displays a list of the highest-scoring users limit to 10.
-5.Animal Selection Game:
-  •A page with five dropdowns, each containing animals from a specific category (underwater, wild animals, birds, insects, farm animals).
-  •The player selects one animal from each category, and the game displays the chosen animals.
-  •Upon selecting three animals (one, two or three based on screen sizes), the game sends the selection to the backend. Either default sentence will be generated or user could type the sentence and save it to the database, and can also show the sentences saved.
+    1.Home Page:
+      •User enters their name.
+      •User selects between two game modes: the Typing Game or the Animal Selection Game. 
+    2.Typing Game:
+      •Home page with a form to enter the user’s name.
+      •Game page where fish swim across the screen with letters. The player types the correct letters, and the fish disappear.
+      •A points system that awards 10 points for each correctly typed letter.
+      •After all fish are gone, the player is taken to a Submit Score page.
+      •A Scoreboard page displays the top scores.
+    3.Save Score Page:
+      •Allows users to save their score to the database and proceed to the scoreboard.
+    4.Scoreboard Page:
+     •Displays a list of the highest-scoring users limit to 10.
+    5.Animal Selection Game:
+     •A page with five dropdowns, each containing animals from a specific category (underwater, wild animals, birds, insects, farm animals).
+     •The player selects one animal from each category, and the game displays the chosen animals.
+     •Upon selecting three animals (one, two or three based on screen sizes), the game sends the selection to the backend. Either default sentence will be generated or user could type the sentence and save it to the database, and can also show the sentences saved.
 
 
 ## Implementation
 
 ### Tech Stack
 
-1.Frontend:
-  •React with react-router-dom for navigation.
-  •Sass for styling, using BEM naming conventions.
-  •GSAP for animations (moving fish and other interactive elements).
-  •Reusable React components to manage form elements, dropdowns, using third-party library react-dropdown to provide better customization ability.
-  •Styles organized with partials, including mixins, variables, and animations.
-  •Axios for API requests
-  •Fonts use modern, pretty, and well balanced Nunito
-  •Use TypeScale to choose a well balanced Font size hierachy https://typescale.com/
-2.Backend:
-  •Node.js with Express. OpenAI API for sentence generation
-3.Database: 
-  •MySQL (for storing and retrieving user scores), Knex for database management.
-4.API: 
-  •Custom backend API: To manage user scores and process animal selection for sentence generation.
+    1.Frontend:
+      •React with react-router-dom for navigation.
+      •Sass for styling, using BEM naming conventions.
+      •GSAP for animations (moving fish and other interactive elements).
+      •Reusable React components to manage form elements, dropdowns, using third-party library react-dropdown to provide better customization ability.
+      •Styles organized with partials, including mixins, variables, and animations.
+      •Axios for API requests
+      •Fonts use modern, pretty, and well balanced Nunito
+      •Use TypeScale to choose a well balanced Font size hierachy https://typescale.com/
+    2.Backend:
+      •Node.js with Express. OpenAI API for sentence generation
+    3.Database: 
+      •MySQL (for storing and retrieving user scores), Knex for database management.
+    4.API: 
+      •Custom backend API: To manage user scores and process animal selection for sentence generation.
   
 ### APIs
 
-  •A backend API to handle score submissions 
-  •APIs to handle generate default sentence for one, two and three animals in three categories
-  •APIs to save the customized text input for one, two and three animals
-  •APIs to save the customized text input for one, two and three animals
-  •APIs to retrieve the list of customized text input for one, two and three animals
+    •A backend API to handle score submissions 
+    •APIs to handle generate default sentence for one, two and three animals in three categories
+    •APIs to save the customized text input for one, two and three animals
+    •APIs to save the customized text input for one, two and three animals
+    •APIs to retrieve the list of customized text input for one, two and three animals
 
 
 ### Sitemap
 
-1.Home Page: Input field for user name and game selection options (Typing Game or Animal Selection Game).
-2.Typing Game Page: Fish with letters swim across the screen; users type letters to earn points.
-3.Submit Score Page: Allows the user to submit their score.
-4.Scoreboard Page: Displays top scores.
-5.Animal Selection Game Page: Dropdowns for selecting animals from various categories, image display, and sentence generation based on selected animals.
+    1.Home Page: Input field for user name and game selection options (Typing Game or Animal Selection Game).
+    2.Typing Game Page: Fish with letters swim across the screen; users type letters to earn points.
+    3.Submit Score Page: Allows the user to submit their score.
+    4.Scoreboard Page: Displays top scores.
+    5.Animal Selection Game Page: Dropdowns for selecting animals from various categories, image display, and sentence generation based on selected animals.
 
 ### Mockups
 
@@ -81,40 +81,45 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
 
 ### Data
 
-•users: id, name, score
-•scores: id, user_id, score
-•animals: id, name, category, image
+    •users: id, name, score
+    •scores: id, user_id, score
+    •animals: id, name, category, image
 
-•one_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in one_category_default)
-•one_category_default: id, name_category_one, default_sentence
+    •one_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in one_category_default)
+    •one_category_default: id, name_category_one, default_sentence
 
-•two_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in two_category_default)
-•two_category_default: id, name_category_one, name_category_two
+    •two_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in two_category_default)
+    •two_category_default: id, name_category_one, name_category_two
 
-•three_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in three_category_default)
-•three_category_default: id, name_category_one, name_category_two, name_category_three
+    •three_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in three_category_default)
+    •three_category_default: id, name_category_one, name_category_two, name_category_three
 
-•one_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in one_category_customized)
-•one_category_customized: id, name, customized_sentence
+    •one_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in one_category_customized)
+    •one_category_customized: id, name, customized_sentence
 
-•two_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in two_category_customized)
-•two_category_customized: id, name_category_one, name_category_two
+    •two_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in two_category_customized)
+    •two_category_customized: id, name_category_one, name_category_two
 
-•three_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in three_category_customized)
-•three_category_customized: id, name_category_one, name_category_two, name_category_three (category_id is foreign key in three_category_customized)
+    •three_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in three_category_customized)
+    •three_category_customized: id, name_category_one, name_category_two, name_category_three (category_id is foreign key in three_category_customized)
 
-•Data points will relate to users, scores for the typing game, and animal categories for the animal selection game.
+    •Data points will relate to users, scores for the typing game, and animal categories for the animal selection game.
 
 ### Endpoints
 
-1. POST /api/score: Submit the user’s score.
-   •Request Body: { name: "userName", score: 100 }
-   •Response: { success: true, message: "Score saved!" }
-2. GET /api/scoreboard: Fetch the top scores.
-   •Response: [{ name: "userName", score: 100 }, ...]
-3. POST /api/generate-sentence: Send selected animals to generate a sentence.
-    •Request Body: { animals: ["Dolphin", "Lion", "Parrot"] }
-    •Response: { sentence: "The dolphin, lion, and parrot went on an adventure." }
+    1. POST /api/score: Submit the user’s score.
+     •Request Body: { name: "userName", score: 100 }
+     •Response: { success: true, message: "Score saved!" }
+    2. GET /api/scoreboard: Fetch the top scores.
+     •Response: [{ name: "userName", score: 100 }, ...]
+    3. POST /api/generate-sentence: Send selected animals to generate a sentence.
+     •Request Body: { animals: ["Dolphin", "Lion", "Parrot"] }
+     •Response: { sentence: "The dolphin, lion, and parrot went on an adventure." }
+     4.	POST /api/save-sentence: Allows users to save a customized sentence based on their animal selection.
+     •Request Body: { "sentence": "My custom sentence with animals", "animals": ["Dolphin", "Lion"] }
+     •Response: { "success": true, "message": "Sentence saved!" }
+     
+     Note: for 3 and 4 is just an example, will have similar ones to generate default and customized sentence based on different categories that are chosen.
 
 ## Roadmap
 
