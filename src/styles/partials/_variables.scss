@@ -1,0 +1,26 @@
+$min-tablet-breakpoint: 48rem;
+$min-desktop-breakpoint: 80rem;
+
+$colors-primary: (
+  global-text: #13182c,
+  interactive-elements: #2e66e5,
+  global-white: #ffffff,
+);
+
+$colors-secondary: (
+  column-headers: #5c667e,
+  outlines: #bdc5d5,
+);
+
+$colors-background: (
+  top-navigation: #232940,
+  page-background: #f7f8f9,
+  hover-background: rgb(46 102 229 / 0.07),
+);
+
+
+$size-default: 1rem;
+
+$size-tiny: 0.25rem;
+
+$border-default: 0.0625rem solid map-get($colors-secondary, outlines);

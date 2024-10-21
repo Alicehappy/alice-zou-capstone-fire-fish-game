@@ -1,4 +1,7 @@
 @use "./typography";
+@use "./animations";
+@use "./mixins" as *;
+@use "./variables" as *;
 
 html {
   box-sizing: border-box;
@@ -8,8 +11,86 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
 }
 
 body {
   font-family: "Nunito", sans-serif;
+  color: map-get($colors-primary, global-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+.font {
+  &--installed {
+    font-family: "Nunito", "Arial", "Helvetic";
+  }
+
+  &--remote {
+    font-family: "Roboto", sans-serif;
+  }
+
+  &--local {
+    font-family: "Nunito";
+  }
+}
+
+h1 {
+  font-family: "Roboto";
+  font-size: 3.815rem;
+  line-height: 5.341rem;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-size: 3.052rem;
+  line-height: 4.2728rem;
+}
+
+h3 {
+  font-family: "Roboto";
+  font-size: 2.441rem;
+  line-height: 3.4174rem;
+}
+
+h4 {
+  font-family: "Roboto";
+  font-size: 1.953rem;
+  line-height: 2.7342rem;
+}
+
+h5 {
+  font-family: "Roboto";
+  font-size: 1.563rem;
+  line-height: 2.1882rem;
+}
+
+h6 {
+  font-family: "Roboto";
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+p {
+  font-family: "Nunito";
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+small {
+  font-family: "Nunito";
+  font-size: 0.8rem;
+  line-height: 1.12rem;
 }
