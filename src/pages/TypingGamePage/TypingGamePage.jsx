@@ -1,7 +1,7 @@
 import "./TypingGamePage.scss";
 
 function TypingGamePage() {
-  return <div></div>;
+  return <div>Here is the typing game</div>;
 }
 
 export default TypingGamePage;

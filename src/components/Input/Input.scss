@@ -1,0 +1,7 @@
+@use "../../styles/partials/variables" as *;
+
+@use "../../styles//partials/mixins" as *;
+
+.input {
+  @include input-style(100%, $size-default, $size-tiny * 1.5);
+}

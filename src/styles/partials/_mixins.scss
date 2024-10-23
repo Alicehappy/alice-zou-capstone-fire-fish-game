@@ -1,0 +1,191 @@
+@use "./variables" as *;
+@use "./typography";
+
+@mixin tablet {
+  @media (min-width: $min-tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $min-desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin h1 {
+  font-size: $size-default * 1.75;
+  line-height: $size-default * 2.25;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 2;
+    line-height: $size-default * 2.5;
+  }
+}
+
+@mixin h2 {
+  font-size: $size-default * 1.25;
+  line-height: $size-default * 1.75;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 1.5;
+    line-height: $size-default * 2;
+  }
+}
+
+@mixin h3 {
+  font-size: $size-default * 0.8125;
+  line-height: $size-default * 1.25;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 0.875;
+    line-height: $size-default * 1.375;
+  }
+}
+
+@mixin h4 {
+  font-size: $size-default * 0.6875;
+  line-height: $size-default * 1;
+  font-weight: 600;
+  color: map-get($colors-secondary, column-headers);
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 0.75;
+    line-height: $size-default * 1.125;
+  }
+}
+
+@mixin p1 {
+  font-size: $size-default * 0.9375;
+  line-height: $size-default * 1.625;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 1;
+    line-height: $size-default * 1.75;
+  }
+}
+
+@mixin p2 {
+  font-size: $size-default * 0.8125;
+  line-height: $size-default * 1.25;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 0.875;
+    line-height: $size-default * 1.375;
+  }
+}
+
+@mixin p3 {
+  font-size: $size-default * 0.6875;
+  line-height: $size-default * 1;
+  @media (min-width: $min-tablet-breakpoint) {
+    font-size: $size-default * 0.75;
+    line-height: $size-default * 1.125;
+  }
+}
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin responsive-padding {
+  padding-left: $size-default * 1.5;
+  padding-right: $size-default * 1.5;
+  @media (min-width: $min-tablet-breakpoint) {
+    padding-left: $size-default * 2;
+    padding-right: $size-default * 2;
+  }
+  @media (min-width: $min-desktop-breakpoint) {
+    padding-left: $size-default * 2.5;
+    padding-right: $size-default * 2.5;
+  }
+}
+
+@mixin input-style(
+  $width: 100%,
+  $padding: $size-default,
+  $border-radius: $size-tiny
+) {
+  width: $width;
+  padding: $padding;
+  border: $border-default;
+  border-radius: $border-radius;
+  font-size: $size-default;
+
+  &:focus {
+    border-color: map-get($colors-primary, interactive-elements);
+    outline: none;
+    box-shadow: 0 0 $size-tiny rgba(0, 123, 255, 0.5);
+  }
+}
+
+@mixin dropdown-style(
+  $width: 100%,
+  $border-color: map-get($colors-secondary, outlines),
+  $radius: $size-tiny
+) {
+  width: $width;
+  .Dropdown-control {
+    border: calc($size-tiny / 4) solid $border-color;
+    border-radius: $radius;
+    padding: $size-default;
+    font-size: $size-default;
+    cursor: pointer;
+
+    &:hover {
+      border-color: map-get($colors-primary, interactive-elements);
+    }
+  }
+
+  .Dropdown-menu {
+    border: calc($size-tiny / 4) solid $border-color;
+    border-radius: $radius;
+    margin-top: $size-tiny * 1.25;
+  }
+}
+
+@mixin button-style(
+  $bg-color: map-get($colors-primary, interactive-elements),
+  $color: mag-get($colors-primary, global-white),
+  $padding: $size-default * 0.75 $size-default * 1.25,
+  $border-radius: $size-tiny * 1.25,
+  $hover-bg-color: null
+) {
+  background-color: $bg-color;
+  color: $color;
+  padding: $padding;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: if(
+      $hover-bg-color,
+      $hover-bg-color,
+      adjust-color($bg-color, $lightness: -10%)
+    );
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+}
+
+@mixin primary-button-style {
+  @include button-style(
+    map-get($colors-primary, interactive-elements),
+    map-get($colors-primary, global-white)
+  );
+}
+
+@mixin secondary-button-style {
+  @include button-style(
+    map-get($colors-secondary, interactive-elements),
+    map-get($colors-primary, global-white),
+    $size-default * 0.625 $size-default * 1.125,
+    $size-tiny * 1.25,
+    adjust-color(
+      map-get($colors-secondary, interactive-elements),
+      $lightness: -10%
+    )
+  );
+}

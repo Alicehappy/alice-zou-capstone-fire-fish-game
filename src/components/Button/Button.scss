@@ -1,0 +1,14 @@
+@use "../../styles//partials/variables" as *;
+@use "../../styles//partials/mixins" as *;
+
+.button {
+  font-size: $size-default;
+
+  &--primary {
+    @include primary-button-style;
+  }
+
+  &--secondary {
+    @include secondary-button-style;
+  }
+}
