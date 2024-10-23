@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+.footer {
+  margin-top: auto;
+  background-color: map-get($colors-secondary, background-neutral);
+  padding: $size-large;
+  text-align: center;
+  color: map-get($text-colors, primary);
+
+  &__text {
+    margin: 0;
+    font-size: $size-default * 1.2;
+  }
+
+  a {
+    color: map-get($colors-primary, background-accent);
+    text-decoration: none;
+
+    &:hover {
+      color: map-get($colors-secondary, accent-interactive-elements);
+    }
+  }
+}

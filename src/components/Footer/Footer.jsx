@@ -2,10 +2,10 @@ import "./Footer.scss";
 
 function Footer() {
   return (
-    <div>
-      
-    </div>
-  )
+    <footer className="footer">
+      <p className="footer__text">© 2024 FireFish. All rights reserved.</p>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

@@ -1,0 +1,33 @@
+@use "../../styles//partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.navigation {
+  visibility: hidden;
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: $size-default;
+  }
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: map-get($colors-primary, global-white);
+    font-size: $size-default * 1.5;
+
+    &:hover {
+      color: map-get($colors-primary, interactive-elements);
+    }
+
+    &--active {
+      border-bottom: $border-default;
+    }
+  }
+
+  @include tablet {
+    visibility: visible;
+  }
+}

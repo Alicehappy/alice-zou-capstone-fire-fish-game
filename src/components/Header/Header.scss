@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $size-large;
+  background-color: map-get($colors-primary, interactive-elements);
+  color: map-get($text-colors, primary);
+
+  &__logo {
+    font-size: $size-large;
+    font-weight: bold;
+  }
+
+  //   @include tablet {
+  //     padding: $size-default * 2.5;
+  //   }
+}

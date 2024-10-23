@@ -22,11 +22,10 @@ function HomePage() {
         placeholder="Enter your name"
       />
       <Button onClick={handleStart} variant="primary">
-        Start Game
+        Start the Typing Game
       </Button>
-
-      <Button onClick={handleStart} variant="secondary">
-        Learn More
+      <Button onClick={handleStart} variant="primary">
+        Start the Animal Selection Game
       </Button>
     </div>
   );

@@ -2,18 +2,28 @@ $min-tablet-breakpoint: 48rem;
 $min-desktop-breakpoint: 80rem;
 
 $colors-primary: (
-  global-text: #13182c,
-  interactive-elements: #007bff,
+  global-text: #2d3436,
+  interactive-elements: #a3cef1,
+  background-accent: #b5e7a0,
+  highlight: #ffdf91,
   global-white: #ffffff,
 );
 
 $colors-secondary: (
+  accent-interactive-elements: #ffcce5,
+  background-neutral: #f8f9fa,
   interactive-elements: #6c757d,
-  outlines: #ddd,
+  outlines: #d1d8e0,
+);
+
+$text-colors: (
+  primary: map-get($colors-primary, global-text),
+  light: map-get($colors-primary, global-white),
 );
 
 $size-default: 1rem;
-
+$size-small: 0.5rem;
+$size-large: 2rem;
 $size-tiny: 0.25rem;
 
 $border-default: 0.0625rem solid map-get($colors-secondary, outlines);

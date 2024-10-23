@@ -155,6 +155,7 @@
   border-radius: $border-radius;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 
   &:hover {
     background-color: if(
