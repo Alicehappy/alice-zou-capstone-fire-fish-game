@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FireFish from "../../components/FireFish/FireFish";
 import { useNavigate } from "react-router-dom";
 import { fetchRandomAnimal } from "../../services/animals-api";
+import "./TypingGamePage.scss";
 
 function TypingGamePage() {
   const [score, setScore] = useState(0);
@@ -58,9 +59,13 @@ function TypingGamePage() {
 
   return (
     <div className="game">
-      <h1 className="game__score">Score: {score}</h1>
-      <h2 className="game__timing">Time Remaining: {timer}s </h2>
-      <h2 className="game__word">Animal Word: {animal.name} </h2>
+      <h1 className="game__detail game__detail--score">Score: {score}</h1>
+      <h2 className="game__detail game__detail--timing">
+        Time Remaining: {timer}s{" "}
+      </h2>
+      <h2 className="game__detail game__detail--word">
+        Animal Word: {animal.name}{" "}
+      </h2>
       {fishArray.map((fish) => (
         <FireFish
           key={fish.id}

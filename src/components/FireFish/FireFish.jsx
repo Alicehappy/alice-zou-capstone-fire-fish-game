@@ -7,7 +7,7 @@ function FireFish({ letter, onLetterCaught }) {
   const fishRef = useRef(null);
   const [isCaught, setIsCaught] = useState(false);
 
-  useAnimations(fishRef, { x: 500, duration: 5 });
+  useAnimations(fishRef, { x: 500, duration: 5, repeat: -1 });
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -33,7 +33,8 @@ function FireFish({ letter, onLetterCaught }) {
     !isCaught && (
       <div ref={fishRef} className="fish-game">
         <div className="fish">
-          🐟<span className="letter">{letter}</span>
+          <span className="fish__icon">🐟</span>
+          <span className="letter">{letter}</span>
         </div>
       </div>
     )

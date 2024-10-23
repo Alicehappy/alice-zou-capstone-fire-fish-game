@@ -11,4 +11,14 @@
   &__title {
     font-size: $size-default * 1.25;
   }
+
+  &__button {
+    &--typing-game {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
 }

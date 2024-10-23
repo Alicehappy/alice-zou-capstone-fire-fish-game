@@ -23,10 +23,12 @@ function HomePage() {
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter your name"
       />
-      <Button onClick={handleStart} variant="primary">
+
+      <Button className="home__button--typing-game" onClick={handleStart} variant="primary">
         <FontAwesomeIcon icon={faFish} />
         Start the Typing Game
       </Button>
+
       <Button onClick={handleStart} variant="primary">
         <FontAwesomeIcon icon={faPaw} />
         Start the Animal Selection Game

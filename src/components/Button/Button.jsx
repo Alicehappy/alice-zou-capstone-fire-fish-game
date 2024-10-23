@@ -6,11 +6,12 @@ function Button({
   disabled = false,
   type = "button",
   variant = "primary",
+  className = "",
 }) {
-  const className = `button button--${variant}`;
+  const classes = `button button--${variant} ${className}`;
   return (
     <button
-      className={className}
+      className={classes}
       onClick={onClick}
       disabled={disabled}
       type={type}
