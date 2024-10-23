@@ -7,31 +7,46 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFish, faPaw } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage() {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleStart = () => {
+  const handleStart = (event) => {
+    event.preventDefault();
+
+    if (!username) {
+      setError("Please enter your username");
+      return;
+    }
+
+    localStorage.setItem("username", username);
+
     navigate("/typing-game");
-    console.log("Start Game clicked!");
   };
 
   return (
     <div className="home">
       <h1 className="home__title">Welcome to FireFish Game</h1>
       <Input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
         placeholder="Enter your name"
       />
 
-      <Button className="home__button--typing-game" onClick={handleStart} variant="primary">
+      <Button
+        className="home__button--typing-game"
+        onClick={handleStart}
+        variant="primary"
+      >
         <FontAwesomeIcon icon={faFish} />
-        Start the Typing Game
+        &nbsp; Start the Typing Game
       </Button>
 
       <Button onClick={handleStart} variant="primary">
         <FontAwesomeIcon icon={faPaw} />
-        Start the Animal Selection Game
+        &nbsp; Start the Animal Selection Game
       </Button>
     </div>
   );

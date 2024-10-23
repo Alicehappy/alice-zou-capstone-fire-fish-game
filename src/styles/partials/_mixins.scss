@@ -174,7 +174,7 @@
 @mixin primary-button-style {
   @include button-style(
     map-get($colors-primary, interactive-elements),
-    map-get($colors-primary, global-white)
+    map-get($colors-primary, global-text)
   );
 }
 

@@ -8,7 +8,7 @@ export const fetchSores = async () => {
   return data;
 };
 
-export const saveScore = async () => {
-    const { data } = await axios.post(`${API_URL}:${PORT}/api/scoreboard`);
+export const saveScore = async (scoreData) => {
+    const { data } = await axios.post(`${API_URL}:${PORT}/api/scoreboard`, scoreData);
     return data;
   };

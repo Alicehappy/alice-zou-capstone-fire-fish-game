@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+
+.scoreboard {
+  text-align: center;
+  margin: $size-large;
+
+  &__title {
+    margin-bottom: $size-default;
+    color: map-get($text-colors, primary);
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: $size-small $size-default;
+    border-bottom: $border-default;
+    background-color: map-get($colors-secondary, background-neutral);
+    &:nth-child(odd) {
+      background-color: map-get($colors-primary, background-accent);
+    }
+  }
+
+  &__rank {
+    font-weight: bold;
+  }
+
+  &__name {
+    flex-grow: 1;
+    text-align: left;
+    color: map-get($text-colors, primary);
+  }
+
+  &__score {
+    font-weight: bold;
+  }
+
+  &__error {
+    color: map-get($colors-status, error);
+    font-weight: bold;
+  }
+}

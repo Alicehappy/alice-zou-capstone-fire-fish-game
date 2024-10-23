@@ -5,7 +5,7 @@ $colors-primary: (
   global-text: #2d3436,
   interactive-elements: #a3cef1,
   background-accent: #b5e7a0,
-  highlight: #ffdf91,
+  highlighted: #ffdf91,
   global-white: #ffffff,
 );
 
@@ -14,6 +14,10 @@ $colors-secondary: (
   background-neutral: #f8f9fa,
   interactive-elements: #6c757d,
   outlines: #d1d8e0,
+);
+
+$colors-status: (
+  error: #c94515,
 );
 
 $text-colors: (

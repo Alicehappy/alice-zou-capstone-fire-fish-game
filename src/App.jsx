@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/typing-game" element={<TypingGamePage />} />
-        <Route path="/save-score" element={<SubmitScorePage />} />
+        <Route path="/submit-score" element={<SubmitScorePage />} />
         <Route path="/scoreboard" element={<ScoreboardPage />} />
         <Route path="/animal-selection" element={<AnimalSelectionPage />} />
         <Route path="*" element={<Page404 />} />

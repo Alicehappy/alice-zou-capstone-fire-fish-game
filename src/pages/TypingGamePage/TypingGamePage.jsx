@@ -46,14 +46,14 @@ function TypingGamePage() {
       return () => clearInterval(intervalId);
     } else {
       localStorage.setItem("score", score);
-      navigate("/save-score");
+      navigate("/submit-score");
     }
   }, [timer, score, navigate]);
 
   useEffect(() => {
     if (fishArray.length === 0) {
       localStorage.setItem("score", score);
-      navigate("/save-score");
+      navigate("/submit-score");
     }
   }, [fishArray, score, navigate]);
 
