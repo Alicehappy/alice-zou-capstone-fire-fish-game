@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.error {
+  margin: 0 $size-default;
+
+  @include tablet {
+    margin: 0 $size-default * 2.25;
+  }
+
+  @include desktop {
+    margin: 0 $size-default * 8;
+  }
+
+  &__redirect {
+    margin: $size-default $size-default * 1.5 $size-default * 0.5 0;
+
+    width: $size-default * 10;
+    height: $size-default * 2.5;
+    color: map-get($colors-primary, global-text);
+    background-color: map-get($colors-primary, interactive-elements);
+    border-radius: $size-tiny;
+    border: none;
+    @include h3;
+    &:hover {
+      background-color: map-get($colors-secondary, interactive-elements);
+    }
+  }
+  &__redirect-text {
+    margin: 0;
+  }
+}
