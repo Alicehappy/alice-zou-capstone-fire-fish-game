@@ -3,6 +3,8 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFish, faPaw } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage() {
   const [name, setName] = useState("");
@@ -22,9 +24,11 @@ function HomePage() {
         placeholder="Enter your name"
       />
       <Button onClick={handleStart} variant="primary">
+        <FontAwesomeIcon icon={faFish} />
         Start the Typing Game
       </Button>
       <Button onClick={handleStart} variant="primary">
+        <FontAwesomeIcon icon={faPaw} />
         Start the Animal Selection Game
       </Button>
     </div>
