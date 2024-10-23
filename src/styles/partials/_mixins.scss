@@ -119,7 +119,7 @@
 @mixin dropdown-style(
   $width: 100%,
   $border-color: map-get($colors-secondary, outlines),
-  $radius: $size-tiny
+  $radius: $size-small
 ) {
   width: $width;
   .Dropdown-control {

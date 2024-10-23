@@ -1,11 +1,16 @@
 import "./AnimalSelectionPage.scss";
 import { useState } from "react";
 import DropdownComponent from "../../components/Dropdown/Dropdown";
+import Button from "../../components/Button/Button";
 
 function AnimalSelectionPage() {
   const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   const animalOptions = ["Dolphpin", "Lion", "Eagle"];
+
+  const handleOnSelectedAnimal = () => {
+    consolelog("you have selected some animals");
+  };
 
   return (
     <div className="animal-selection">
@@ -17,7 +22,9 @@ function AnimalSelectionPage() {
         onSelect={(e) => setSelectedAnimal(e.value)}
         placeholder="Select an animal"
       />
-      <button className="animal-selection__button">Start Game</button>
+      <Button onClick={handleOnSelectedAnimal} variant="primary">
+        Create Story
+      </Button>
     </div>
   );
 }

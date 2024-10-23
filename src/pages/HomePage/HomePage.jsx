@@ -26,6 +26,11 @@ function HomePage() {
     navigate("/typing-game");
   };
 
+  const handleOnStartAnimalGame = (event) => {
+    event.preventDefault();
+    navigate("/animal-selection");
+  };
+
   return (
     <div className="home">
       <h1 className="home__title">Welcome to FireFish Game</h1>
@@ -44,7 +49,7 @@ function HomePage() {
         &nbsp; Start the Typing Game
       </Button>
 
-      <Button onClick={handleStart} variant="primary">
+      <Button onClick={handleOnStartAnimalGame} variant="primary">
         <FontAwesomeIcon icon={faPaw} />
         &nbsp; Start the Animal Selection Game
       </Button>

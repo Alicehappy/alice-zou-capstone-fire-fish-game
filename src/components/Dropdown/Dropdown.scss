@@ -2,5 +2,5 @@
 @use "../../styles/partials/mixins" as *;
 
 dropdown {
-  @include dropdown-style(100%, #ddd, calc($size-default / 2));
+  @include dropdown-style();
 }
