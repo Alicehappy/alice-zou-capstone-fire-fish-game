@@ -58,22 +58,24 @@ function TypingGamePage() {
   }, [fishArray, score, navigate]);
 
   return (
-    <div className="game">
-      <h1 className="game__detail game__detail--score">Score: {score}</h1>
-      <h2 className="game__detail game__detail--timing">
-        Time Remaining: {timer}s{" "}
-      </h2>
-      <h2 className="game__detail game__detail--word">
-        Animal Word: {animal.name}{" "}
-      </h2>
-      {fishArray.map((fish) => (
-        <FireFish
-          key={fish.id}
-          letter={fish.char}
-          onLetterCaught={() => handleLetterCaught(fish.id)}
-        />
-      ))}
-    </div>
+    <>
+      <div className="game">
+        <h1 className="game__detail game__detail--score">Score: {score}</h1>
+        <h2 className="game__detail game__detail--timing">
+          Time Remaining: {timer}s{" "}
+        </h2>
+        <h2 className="game__detail game__detail--word">
+          Animal Word: {animal.name}{" "}
+        </h2>
+        {fishArray.map((fish) => (
+          <FireFish
+            key={fish.id}
+            letter={fish.char}
+            onLetterCaught={() => handleLetterCaught(fish.id)}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 

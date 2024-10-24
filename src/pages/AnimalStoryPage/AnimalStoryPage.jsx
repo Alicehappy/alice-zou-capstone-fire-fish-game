@@ -25,7 +25,6 @@ function AnimalStoryPage() {
           animals.map(async (animal) => {
             try {
               const data = await fetchFunFacts(animal.id);
-
               if (Array.isArray(data) && data.length > 0) {
                 return {
                   name: animal.name,
@@ -48,7 +47,7 @@ function AnimalStoryPage() {
                   facts: ["No fun facts available."],
                 };
               }
-              throw err; // Rethrow other errors for global handling.
+              throw err;
             }
           })
         );
@@ -68,28 +67,36 @@ function AnimalStoryPage() {
     loadFunFacts();
   }, [animals]);
 
+  const loadStories = async () => {
+    const user_id = localStorage.getItem("user_id");
+    if (!user_id) return;
+    try {
+      const data = await fetchUserStories(user_id);
+      setStories(Array.isArray(data) ? data : []);
+      return data;
+    } catch (err) {
+      console.error("Error fetching stories:", err);
+      setError("Failed to load stories.");
+      return [];
+    }
+  };
+
   useEffect(() => {
-    const loadStories = async (user_id) => {
-      try {
-        const { data } = await fetchUserStories(user_id);
-        setStories(data);
-      } catch (err) {
-        console.error("Error fetching stories:", err);
-        setError("Failed to load stories.");
-      }
-    };
     loadStories();
   }, []);
 
   const handleSaveStory = async () => {
     try {
       const storyData = {
-        user_name: localStorage.getItem("username"), // Get current user's ID from local storage
+        user_name: localStorage.getItem("username"),
         story_text: storyText,
       };
-      await saveFunFact(storyData);
+
+      await saveStory(storyData);
       setStoryText("");
       alert("Story saved successfully!");
+
+      await loadStories();
     } catch (err) {
       console.error("Error saving story:", err);
       setError("Failed to save story.");
@@ -139,8 +146,11 @@ function AnimalStoryPage() {
         <h2>My Stories</h2>
         {stories && stories.length > 0 ? (
           <ul className="story-page__stories-list">
-            {stories.map((story) => (
-              <li key={story.id} className="story-page__story-item">
+            {stories.map((story, index) => (
+              <li
+                key={story.id}
+                className={`story-page__story-item story-color-${index % 4}`}
+              >
                 <p>{story.story_text}</p>
               </li>
             ))}

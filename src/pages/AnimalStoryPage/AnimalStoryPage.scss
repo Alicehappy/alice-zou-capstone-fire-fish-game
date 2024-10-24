@@ -9,22 +9,65 @@
 
   @include display-flex;
   @include responsive-padding;
+
   &__input {
     @include textarea-style;
   }
-  &__actions{
+
+  &__actions {
     align-self: stretch;
 
     flex-direction: column;
-    gap:$size-small * 2;
+    gap: $size-small * 2;
     @include display-flex;
     @include tablet {
       flex-direction: row-reverse;
-      
+    }
+  }
+
+  &__existing-stories {
+    width: 100%;
+    max-width: 800px;
+    margin-top: $size-default * 2;
+  }
+
+  &__stories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $size-small;
+  }
+
+  &__story-item {
+    padding: $size-small;
+    border-radius: $size-small;
+    font-size: $size-default * 0.9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.story-color-0 {
+      background-color: #f8e1e1;
+    }
+
+    &.story-color-1 {
+      background-color: #e1f8e3;
+    }
+
+    &.story-color-2 {
+      background-color: #e1e8f8;
+    }
+
+    &.story-color-3 {
+      background-color: #f8f3e1;
     }
   }
 }
-
 
 .animal-card {
   flex-direction: column;
@@ -48,7 +91,6 @@
     @include p1;
   }
 }
-
 
 .animal-cards {
   display: grid;

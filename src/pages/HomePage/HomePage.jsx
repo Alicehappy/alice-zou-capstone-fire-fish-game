@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFish, faPaw } from "@fortawesome/free-solid-svg-icons";
+import { registerUser } from "../../services/user-api";
 
 function HomePage() {
   const [username, setUsername] = useState(
@@ -13,28 +14,28 @@ function HomePage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleStart = (event) => {
-    event.preventDefault();
+  const handleGameStart = async (gameType) => {
+    try {
+      const user_id = await registerUser(username);
+      localStorage.setItem("user_id", user_id);
+      localStorage.setItem("username", username);
 
-    if (!username) {
-      setError("Please enter your username");
-      return;
+      if (gameType === "typing") {
+        navigate("/typing-game");
+      } else if (gameType === "animal") {
+        navigate("/animal-selection");
+      }
+    } catch (error) {
+      console.error("Error registering user: ", error);
+      alert("Failed to register user.");
     }
-
-    localStorage.setItem("username", username);
-
-    navigate("/typing-game");
-  };
-
-  const handleOnStartAnimalGame = (event) => {
-    event.preventDefault();
-    navigate("/animal-selection");
   };
 
   return (
     <div className="home">
       <h1 className="home__title">Welcome to FireFish Game</h1>
       <Input
+        type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Enter your name"
@@ -42,16 +43,16 @@ function HomePage() {
 
       <Button
         className="home__button--typing-game"
-        onClick={handleStart}
+        onClick={() => handleGameStart("typing")}
         variant="primary"
       >
         <FontAwesomeIcon icon={faFish} />
-        &nbsp; Start the Typing Game
+        &nbsp; Start Typing Game
       </Button>
 
-      <Button onClick={handleOnStartAnimalGame} variant="primary">
+      <Button onClick={() => handleGameStart("animal")} variant="primary">
         <FontAwesomeIcon icon={faPaw} />
-        &nbsp; Start the Animal Selection Game
+        &nbsp; Start Animal Selection Game
       </Button>
     </div>
   );
