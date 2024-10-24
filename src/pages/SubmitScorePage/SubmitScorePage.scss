@@ -21,7 +21,7 @@
   button {
     margin-top: $size-default;
     background-color: map-get($colors-primary, interactive-elements);
-    color: map-get($text-colors, light);
+    color: map-get($text-colors, global-text);
     border: none;
     padding: $size-default $size-large;
     font-size: $size-default;
@@ -30,7 +30,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: map-get($colors-secondary, accent-interactive-elements);
+      background-color: map-get($colors-primary, highlighted);
     }
   }
 

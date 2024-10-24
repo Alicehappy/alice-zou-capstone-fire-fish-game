@@ -34,12 +34,17 @@ function SubmitScorePage() {
     }
   };
 
+  const handleOnTryAgain = () => {
+    navigate("/typing-game");
+  }
+
   return (
     <div className="submit-score">
       <h1 className="submit-score__title">Game Over!</h1>
       <h3>Your score: {score}</h3>
       {username && <h3>Player: {username}</h3>}
       <Button onClick={submitScore}>Submit Score</Button>
+      <Button onClick={handleOnTryAgain}>Try Again</Button>
       {submissionStatus && (
         <p className="submit-score__status">{submissionStatus}</p>
       )}

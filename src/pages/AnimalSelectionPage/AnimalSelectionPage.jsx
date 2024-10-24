@@ -10,11 +10,11 @@ const API_URL = import.meta.env.VITE_BACKEND_URL;
 const PORT = import.meta.env.VITE_PORT;
 
 const placeholders = {
-  underwater: "/images/underwater.webp",
-  wild: "/images/wild.webp",
-  birds: "/images/birds.webp",
-  insects: "/images/insects.webp",
-  farm: "/images/farm.webp",
+  underwater: `${API_URL}:${PORT}/images/underwater.webp`,
+  wild: `${API_URL}:${PORT}/images/wild.webp`,
+  birds: `${API_URL}:${PORT}/images/birds.webp`,
+  insects: `${API_URL}:${PORT}/images/insects.webp`,
+  farm: `${API_URL}:${PORT}/images/farm.webp`,
 };
 
 function AnimalSelectionPage() {
@@ -26,11 +26,17 @@ function AnimalSelectionPage() {
   const getSelectionLimit = () => {
     const width = window.innerWidth;
     if (width < 768) return 1;
-    if (width < 1024) return 2;
+    if (width < 1280) return 2;
     return 5;
   };
 
-  const selectionLimit = getSelectionLimit();
+  const [selectionLimit, setSelectionLimit] = useState(getSelectionLimit());
+
+  useEffect(() => {
+    const handleResize = () => setSelectionLimit(getSelectionLimit());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const loadCategoriesWithAnimals = async () => {
@@ -47,14 +53,18 @@ function AnimalSelectionPage() {
     loadCategoriesWithAnimals();
   }, []);
 
-  const handleAnimalSelect = (animal) => {
-    if (selectedAnimals.length < selectionLimit) {
-      setSelectedAnimals([...selectedAnimals, animal]);
-    }
+  const handleAnimalSelect = (animal, categoryId) => {
+    setSelectedAnimals((prev) => {
+      const updated = { ...prev, [categoryId]: animal };
+      console.log("Updated selectedAnimals: ", updated);
+      return updated;
+    });
   };
 
   const handleCreateStory = () => {
-    navigate("/story", { state: { animals: selectedAnimals } });
+    const animals = Object.values(selectedAnimals);
+    console.log("Animals on clicking Create Story button: ", animals);
+    navigate("/story", { state: { animals: animals } });
   };
 
   if (error) return <Error error={error} />;
@@ -66,20 +76,8 @@ function AnimalSelectionPage() {
       </h1>
       <h3 className="animal-selection__subtitle">Select Your Animal(s)</h3>
 
-      {/* {selectedAnimal && (
-        <div className="animal-card">
-          <img
-            src={`${API_URL}:${PORT}${selectedAnimal.image_url}`}
-            alt={selectedAnimal.name}
-            className="animal-card__image"
-          />
-          <p className="animal-card__name">{selectedAnimal.name}</p>
-        </div>
-      )} */}
-
-      {/* Render dropdowns for each category */}
       <div className="animal-cards-container">
-        {categoriesWithAnimals.map((category) => (
+        {categoriesWithAnimals.slice(0, selectionLimit).map((category) => (
           <div key={category.id} className="animal-dropdown">
             <h2 className="animal-dropdown__title">{category.name}</h2>
             <div className="animal-card">
