@@ -2,11 +2,16 @@
 @use "../../styles/partials/mixins" as *;
 
 .navigation {
-  visibility: hidden;
+  // visibility: hidden;
   &__list {
+    flex-direction: column;
+    align-items: stretch;
     list-style: none;
-    display: flex;
     gap: $size-default;
+    @include display-flex;
+    @include tablet {
+      flex-direction: row;
+    }
   }
 
   &__item {
@@ -16,7 +21,7 @@
   &__link {
     text-decoration: none;
     color: map-get($colors-primary, global-white);
-    font-size: $size-default * 1.5;
+    @include h2;
 
     &:hover {
       color: map-get($colors-primary, interactive-elements);
@@ -27,7 +32,7 @@
     }
   }
 
-  @include tablet {
-    visibility: visible;
-  }
+  // @include tablet {
+  //   visibility: visible;
+  // }
 }

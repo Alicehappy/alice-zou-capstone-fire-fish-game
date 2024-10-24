@@ -1,64 +1,65 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.animal-selection {
-  display: flex;
+.story-page {
+  margin-top: $size-default * 2;
   flex-direction: column;
   align-items: center;
-  gap: $size-default;
-  margin-top: $size-default * 2;
+  gap: $size-small * 2;
 
-  &__title {
-    font-size: $size-large;
+  @include display-flex;
+  @include responsive-padding;
+  &__input {
+    @include textarea-style;
   }
+  &__actions{
+    align-self: stretch;
 
-  &__subtitle {
-    font-size: $size-default;
-    margin-bottom: $size-small;
-  }
-
-  .animal-cards-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $size-large;
-
+    flex-direction: column;
+    gap:$size-small * 2;
+    @include display-flex;
     @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include desktop {
-      grid-template-columns: repeat(5, 1fr);
+      flex-direction: row-reverse;
+      
     }
   }
+}
 
-  .animal-dropdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $size-small;
 
-    &__title {
-      font-size: $size-default * 1.5;
-      margin-bottom: $size-tiny;
-    }
-  }
+.animal-card {
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $size-small;
 
-  .animal-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  @include display-flex;
+
+  &__image {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
     margin-bottom: $size-small;
+    border: $border-default;
+    border-radius: $size-small;
+  }
 
-    &__image {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: $size-tiny;
-    }
+  &__name {
+    font-weight: bold;
+    color: map-get($text-colors, primary);
+    @include p1;
+  }
+}
 
-    &__name {
-      font-size: $size-small;
-    }
+
+.animal-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $size-large;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(5, 1fr);
   }
 }

@@ -21,17 +21,50 @@ function AnimalStoryPage() {
   useEffect(() => {
     const loadFunFacts = async () => {
       try {
-        const facts = {};
-        for (const animal of animals) {
-          const data = await fetchFunFacts(animal.id);
-          facts[animal.name] = data.map((fact) => fact.fact);
-        }
+        const factsArray = await Promise.all(
+          animals.map(async (animal) => {
+            try {
+              const data = await fetchFunFacts(animal.id);
+
+              if (Array.isArray(data) && data.length > 0) {
+                return {
+                  name: animal.name,
+                  facts: data.map((fact) => fact.fact),
+                };
+              } else {
+                console.warn(
+                  `Unexpected data format or no fun facts for ${animal.name}.`
+                );
+                return {
+                  name: animal.name,
+                  facts: ["No fun facts available."],
+                };
+              }
+            } catch (err) {
+              if (err.response && err.response.status === 404) {
+                console.warn(`No fun facts found for ${animal.name}.`);
+                return {
+                  name: animal.name,
+                  facts: ["No fun facts available."],
+                };
+              }
+              throw err; // Rethrow other errors for global handling.
+            }
+          })
+        );
+
+        const facts = factsArray.reduce((acc, { name, facts }) => {
+          acc[name] = facts;
+          return acc;
+        }, {});
+
         setFunFacts(facts);
       } catch (err) {
         console.error("Error fetching fun facts:", err);
         setError("Failed to load fun facts.");
       }
     };
+
     loadFunFacts();
   }, [animals]);
 
@@ -79,9 +112,8 @@ function AnimalStoryPage() {
             />
             <h2 className="animal-card__name">{animal.name}</h2>
             <ul className="animal-card__fun-facts">
-              {funFacts[animal.name]?.map((fact, index) => (
-                <li key={index}>{fact}</li>
-              ))}
+              {funFacts[animal.name] ||
+                []?.map((fact, index) => <li key={index}>{fact}</li>)}
             </ul>
           </div>
         ))}
@@ -105,7 +137,7 @@ function AnimalStoryPage() {
 
       <div className="story-page__existing-stories">
         <h2>My Stories</h2>
-        {stories.length > 0 ? (
+        {stories && stories.length > 0 ? (
           <ul className="story-page__stories-list">
             {stories.map((story) => (
               <li key={story.id} className="story-page__story-item">

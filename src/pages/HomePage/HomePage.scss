@@ -10,11 +10,10 @@
   margin-top: $size-default * 2;
 
   &__title {
-    font-size: $size-default * 1.15;
+    @include h1;
     margin-bottom: $size-default;
 
     @include tablet {
-      font-size: $size-default * 3;
       margin-bottom: $size-default * 2;
     }
   }

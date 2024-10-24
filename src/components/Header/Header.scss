@@ -2,19 +2,21 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: $size-large;
   background-color: map-get($colors-primary, interactive-elements);
   color: map-get($text-colors, primary);
 
+  @include display-flex;
   &__logo {
-    font-size: $size-large;
+    @include h1;
     font-weight: bold;
   }
 
-  //   @include tablet {
+    @include tablet {
+      flex-direction: row;
   //     padding: $size-default * 2.5;
-  //   }
+    }
 }

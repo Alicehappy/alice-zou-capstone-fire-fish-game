@@ -2,7 +2,9 @@
 @use "../../styles//partials/mixins" as *;
 
 .button {
-  font-size: $size-default;
+  // font-size: $size-default;
+
+  @include p2;
 
   &--primary {
     @include primary-button-style;

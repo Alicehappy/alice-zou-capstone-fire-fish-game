@@ -16,7 +16,7 @@
 @mixin h1 {
   font-size: $size-default * 1.75;
   line-height: $size-default * 2.25;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 2;
     line-height: $size-default * 2.5;
   }
@@ -25,7 +25,7 @@
 @mixin h2 {
   font-size: $size-default * 1.25;
   line-height: $size-default * 1.75;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 1.5;
     line-height: $size-default * 2;
   }
@@ -34,7 +34,7 @@
 @mixin h3 {
   font-size: $size-default * 0.8125;
   line-height: $size-default * 1.25;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 0.875;
     line-height: $size-default * 1.375;
   }
@@ -45,7 +45,7 @@
   line-height: $size-default * 1;
   font-weight: 600;
   color: map-get($colors-secondary, column-headers);
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 0.75;
     line-height: $size-default * 1.125;
   }
@@ -54,7 +54,7 @@
 @mixin p1 {
   font-size: $size-default * 0.9375;
   line-height: $size-default * 1.625;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 1;
     line-height: $size-default * 1.75;
   }
@@ -63,7 +63,7 @@
 @mixin p2 {
   font-size: $size-default * 0.8125;
   line-height: $size-default * 1.25;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 0.875;
     line-height: $size-default * 1.375;
   }
@@ -72,7 +72,7 @@
 @mixin p3 {
   font-size: $size-default * 0.6875;
   line-height: $size-default * 1;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     font-size: $size-default * 0.75;
     line-height: $size-default * 1.125;
   }
@@ -88,11 +88,11 @@
 @mixin responsive-padding {
   padding-left: $size-default * 1.5;
   padding-right: $size-default * 1.5;
-  @media (min-width: $min-tablet-breakpoint) {
+  @include tablet {
     padding-left: $size-default * 2;
     padding-right: $size-default * 2;
   }
-  @media (min-width: $min-desktop-breakpoint) {
+  @include desktop {
     padding-left: $size-default * 2.5;
     padding-right: $size-default * 2.5;
   }
@@ -107,13 +107,23 @@
   padding: $padding;
   border: $border-default;
   border-radius: $border-radius;
-  font-size: $size-default;
+  // font-size: $size-default;
+  @include p2;
 
   &:focus {
     border-color: map-get($colors-primary, interactive-elements);
     outline: none;
     box-shadow: 0 0 $size-tiny rgba(0, 123, 255, 0.5);
   }
+}
+
+@mixin textarea-style(
+  $width: 100%,
+  $padding: $size-default,
+  $border-radius: $size-tiny
+) {
+  resize: none;
+  @include input-style($width, $padding, $border-radius)
 }
 
 @mixin dropdown-style(
@@ -125,10 +135,10 @@
   .Dropdown-control {
     border: calc($size-tiny / 4) solid $border-color;
     border-radius: $radius;
-    padding: $size-default;
-    font-size: $size-default;
+    padding: $size-default $size-default * 2 $size-default $size-default;
+    // font-size: $size-default;
     cursor: pointer;
-
+    @include p2;
     &:hover {
       border-color: map-get($colors-primary, interactive-elements);
     }

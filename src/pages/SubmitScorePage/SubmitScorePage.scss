@@ -13,9 +13,9 @@
   }
 
   p {
-    font-size: $size-default;
     margin: $size-small 0;
     color: map-get($text-colors, primary);
+    @include p1;
   }
 
   button {
@@ -24,10 +24,10 @@
     color: map-get($text-colors, global-text);
     border: none;
     padding: $size-default $size-large;
-    font-size: $size-default;
     border-radius: $size-small;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    @include p1;
 
     &:hover {
       background-color: map-get($colors-primary, highlighted);
