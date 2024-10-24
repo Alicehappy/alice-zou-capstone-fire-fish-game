@@ -19,3 +19,39 @@
     }
   }
 }
+
+
+.animal-card {
+    text-align: center;
+    margin-bottom: $size-default;
+  
+    &__image {
+      width: 150px;
+      height: auto;
+      margin-bottom: $size-small;
+      border: $border-default;
+      border-radius: $size-small;
+    }
+  
+    &__name {
+      font-size: $size-default;
+      font-weight: bold;
+      color: map-get($text-colors, primary);
+    }
+  }
+  
+  .animal-dropdown {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: $size-large;
+  
+    &__title {
+      margin-bottom: $size-small;
+      font-size: $size-default * 1.1;
+      color: map-get($text-colors, primary);
+    }
+  
+    @include tablet {
+      max-width: 400px;
+    }
+  }

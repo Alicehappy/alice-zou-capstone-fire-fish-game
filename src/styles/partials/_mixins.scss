@@ -139,6 +139,10 @@
     border-radius: $radius;
     margin-top: $size-tiny * 1.25;
   }
+
+  .Dropdown-arrow {
+    top: $size-default * 1.5;
+  }
 }
 
 @mixin button-style(
