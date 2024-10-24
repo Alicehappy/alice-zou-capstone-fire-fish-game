@@ -1,0 +1,64 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.animal-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $size-default;
+  margin-top: $size-default * 2;
+
+  &__title {
+    font-size: $size-large;
+  }
+
+  &__subtitle {
+    font-size: $size-default;
+    margin-bottom: $size-small;
+  }
+
+  .animal-cards-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $size-large;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .animal-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $size-small;
+
+    &__title {
+      font-size: $size-default * 1.5;
+      margin-bottom: $size-tiny;
+    }
+  }
+
+  .animal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $size-small;
+
+    &__image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: $size-tiny;
+    }
+
+    &__name {
+      font-size: $size-small;
+    }
+  }
+}
