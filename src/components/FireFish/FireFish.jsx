@@ -17,9 +17,6 @@ function FireFish({ letter, onLetterCaught }) {
           x: window.innerWidth + 100,
           duration: getRandomSpeed(),
           ease: "linear",
-          conComplete: () => {
-            gsap.set(fishRef.current, { x: -100 });
-          },
         });
       }
     };

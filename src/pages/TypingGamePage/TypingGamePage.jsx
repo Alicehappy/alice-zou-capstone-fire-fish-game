@@ -6,9 +6,10 @@ import "./TypingGamePage.scss";
 
 function TypingGamePage() {
   const [score, setScore] = useState(0);
-  const [fishArray, setFishArray] = useState(["c", "a", "t"]);
+  const [fishArray, setFishArray] = useState([]);
   const [animal, setAnimal] = useState("dolphin");
   const [timer, setTimer] = useState(30);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,6 +24,7 @@ function TypingGamePage() {
         }));
 
         setFishArray(lettersArray);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching animal word:", error);
       }
@@ -51,31 +53,36 @@ function TypingGamePage() {
   }, [timer, score, navigate]);
 
   useEffect(() => {
-    if (fishArray.length === 0) {
+    if (fishArray.length === 0 && !loading) {
       localStorage.setItem("score", score);
       navigate("/submit-score");
     }
   }, [fishArray, score, navigate]);
 
+  if (loading) {
+    return <>Loading....;</>;
+  }
+
   return (
-    <>
-      <div className="game">
-        <h1 className="game__detail game__detail--score">Score: {score}</h1>
-        <h2 className="game__detail game__detail--timing">
-          Time Remaining: {timer}s{" "}
-        </h2>
-        <h2 className="game__detail game__detail--word">
-          Animal Word: {animal.name}{" "}
-        </h2>
-        {fishArray.map((fish) => (
+    <div className="game">
+      <h1 className="game__detail game__detail--score">Score: {score}</h1>
+      <h2 className="game__detail game__detail--timing">
+        Time Remaining: {timer}s{" "}
+      </h2>
+      <h2 className="game__detail game__detail--word">
+        Animal Word: {animal.name}{" "}
+      </h2>
+      {fishArray.map((fish) => {
+        console.log(fish.id);
+        return (
           <FireFish
             key={fish.id}
             letter={fish.char}
             onLetterCaught={() => handleLetterCaught(fish.id)}
           />
-        ))}
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
 }
 
