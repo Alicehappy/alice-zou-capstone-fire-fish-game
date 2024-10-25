@@ -3,15 +3,85 @@
 
 .navigation {
   // visibility: hidden;
+  position: relative;
+
+
+  &:after {
+    content: " ";
+    // background: rgba(244, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 40px;
+  }
+
+  .burger {
+    width: 52px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15%;
+    border-radius: $size-tiny;
+    border: none;
+
+    @include tablet {
+      display: none;
+    }
+
+    span {
+      height: 3px;
+      width: 100%;
+      background-color: #333;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+  }
   &__list {
     flex-direction: column;
     align-items: stretch;
     list-style: none;
-    gap: $size-default;
+
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 200px;
+    background-color: map-get($colors-primary, interactive-elements);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    // visibility: hidden;
+
+    // transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    // max-height: none;
+
     @include display-flex;
     @include tablet {
+      gap: $size-default;
       flex-direction: row;
+      position: unset;
+      width: auto;
+      background: transparent;
+      box-shadow: unset;
     }
+  }
+
+  &:not(:focus-within) > &__list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    @include tablet {
+      max-height: none;
+      overflow: auto;
+      opacity: 1;
+    }
+  }
+
+  &:not(:focus-within):after {
+    height: 0;
   }
 
   &__item {
@@ -19,6 +89,8 @@
   }
 
   &__link {
+    display: block;
+    padding: $size-default;
     text-decoration: none;
     color: map-get($colors-primary, global-white);
     @include h2;

@@ -1,26 +1,28 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .scoreboard {
   text-align: center;
-  margin: $size-large;
+  @include page;
 
   &__title {
     margin-bottom: $size-default;
-    color: map-get($text-colors, primary);
   }
 
   &__list {
+    align-self: stretch;
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
 
   &__item {
-    display: flex;
+    gap: $size-small;
     justify-content: space-between;
     padding: $size-small $size-default;
     border-bottom: $border-default;
     background-color: map-get($colors-secondary, background-neutral);
+    @include display-flex;
     &:nth-child(odd) {
       background-color: map-get($colors-primary, background-accent);
     }

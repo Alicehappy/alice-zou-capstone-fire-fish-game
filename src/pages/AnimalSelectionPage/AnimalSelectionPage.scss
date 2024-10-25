@@ -2,40 +2,36 @@
 @use "../../styles/partials/mixins" as *;
 
 .animal-selection {
-  flex-direction: column;
-  align-items: center;
-  gap: $size-small * 2;
-  margin-top: $size-default * 2;
-
-  @include display-flex;
-  @include responsive-padding;
+  @include page;
 
   &__title {
+    // margin-bottom: $size-default;
     @include h1;
-    margin-bottom: $size-default;
 
-    @include tablet {
-      margin-bottom: $size-default * 2;
-    }
+    // @include tablet {
+    //   margin-bottom: $size-default * 2;
+    // }
   }
 
   &__subtitle {
-    margin-bottom: $size-small;
+    // margin-bottom: $size-small;
     @include h2;
   }
 
   .animal-cards-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr;
     gap: $size-large;
 
-    @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    @include display-flex;
 
-    @include desktop {
-      grid-template-columns: repeat(5, 1fr);
-    }
+    // @include tablet {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+    // @include desktop {
+    //   grid-template-columns: repeat(5, 1fr);
+    // }
   }
 
   .animal-dropdown {
@@ -46,15 +42,26 @@
 
     @include display-flex;
 
+    @include tablet {
+      max-width: 400px;
+    }
+
     &__title {
       // font-size: $size-default * 1.5;
       margin-bottom: $size-small;
       // font-size: $size-default * 1.1;
       color: map-get($text-colors, primary);
     }
-
-    @include tablet {
-      max-width: 400px;
+    .Dropdown-control {
+      padding: $size-small $size-default * 2 $size-small $size-small;
+    }
+    .Dropdown-placeholder.is-selected {
+      font-weight: bold;
+      color: map-get($text-colors, primary);
+      @include p1;
+    }
+    .Dropdown-arrow {
+      top: $size-default * 1.25;
     }
   }
 
@@ -72,12 +79,6 @@
       margin-bottom: $size-small;
       border: $border-default;
       border-radius: $size-small;
-    }
-
-    &__name {
-      font-weight: bold;
-      color: map-get($text-colors, primary);
-      @include p1;
     }
   }
 }

@@ -41,10 +41,12 @@ function SubmitScorePage() {
   return (
     <div className="submit-score">
       <h1 className="submit-score__title">Game Over!</h1>
-      <h3>Your score: {score}</h3>
-      {username && <h3>Player: {username}</h3>}
-      <Button onClick={submitScore}>Submit Score</Button>
+      <p className="submit-score__score">Your score: {score}</p>
+      {username && <p className="submit-score__player">Player: {username}</p>}
+      <div className="submit-score__actions">
+      <Button variant="secondary" onClick={submitScore}>Submit Score</Button>
       <Button onClick={handleOnTryAgain}>Try Again</Button>
+      </div>
       {submissionStatus && (
         <p className="submit-score__status">{submissionStatus}</p>
       )}

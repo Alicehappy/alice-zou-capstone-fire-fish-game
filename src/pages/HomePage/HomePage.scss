@@ -2,12 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .home {
-  @include responsive-padding;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $size-small * 2;
-  margin-top: $size-default * 2;
+  @include page;
 
   &__title {
     @include h1;

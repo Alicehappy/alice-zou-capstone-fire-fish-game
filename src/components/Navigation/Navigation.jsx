@@ -4,25 +4,26 @@ import "./Navigation.scss";
 function Navigation() {
   return (
     <nav className="navigation">
+      <button className="burger"><span></span><span></span><span></span></button>
       <ul className="navigation__list">
         <li className="navigation__item">
-          <NavLink to="/" activeclassname="navigation__link--active" exact="true">
+          <NavLink to="/" className="navigation__link" activeclassname="navigation__link--active" exact="true">
             Home
           </NavLink>
         </li>
         <li className="navigation__item">
-          <NavLink to="/typing-game" activeclassname="navigation__link--active">
+          <NavLink to="/typing-game" className="navigation__link" activeclassname="navigation__link--active">
             Typing Game
           </NavLink>
         </li>
         <li className="navigation__item">
-          <NavLink to="/scoreboard" activeclassname="navigation__link--active">
+          <NavLink to="/scoreboard" className="navigation__link" activeclassname="navigation__link--active">
             Scoreboard
           </NavLink>
         </li>
         <li className="navigation__item">
           <NavLink
-            to="/animal-selection"
+            to="/animal-selection" className="navigation__link" 
             activeclassname="navigation__link--active"
           >
             Select Animals

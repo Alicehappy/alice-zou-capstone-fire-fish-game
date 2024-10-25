@@ -58,6 +58,7 @@ function AnimalStoryPage() {
         }, {});
 
         setFunFacts(facts);
+        console.log(facts);
       } catch (err) {
         console.error("Error fetching fun facts:", err);
         setError("Failed to load fun facts.");
@@ -118,10 +119,16 @@ function AnimalStoryPage() {
               className="animal-card__image"
             />
             <h2 className="animal-card__name">{animal.name}</h2>
-            <ul className="animal-card__fun-facts">
-              {funFacts[animal.name] ||
-                []?.map((fact, index) => <li key={index}>{fact}</li>)}
-            </ul>
+
+            {(
+              <p className="animal-card__fun-fact">{funFacts[animal.name]}</p>
+            ) || (
+              <ul className="animal-card__fun-facts">
+                {[]?.map((fact, index) => (
+                  <li key={index}>{fact}</li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>

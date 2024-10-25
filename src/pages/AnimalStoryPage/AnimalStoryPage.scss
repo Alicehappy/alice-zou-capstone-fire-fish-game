@@ -2,13 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .story-page {
-  margin-top: $size-default * 2;
-  flex-direction: column;
-  align-items: center;
-  gap: $size-small * 2;
-
-  @include display-flex;
-  @include responsive-padding;
+  @include page;
 
   &__input {
     @include textarea-style;
@@ -27,7 +21,7 @@
 
   &__existing-stories {
     width: 100%;
-    max-width: 800px;
+    // max-width: 800px;
     margin-top: $size-default * 2;
   }
 
@@ -70,6 +64,7 @@
 }
 
 .animal-card {
+  flex: 1 1 150px;
   flex-direction: column;
   align-items: center;
   margin-bottom: $size-small;
@@ -90,18 +85,26 @@
     color: map-get($text-colors, primary);
     @include p1;
   }
+
+  &__fun-fact, &__fun-facts {
+    background: map-get($colors-primary, background-accent);
+    border-radius: $size-small;
+    padding: $size-small;
+  }
 }
 
 .animal-cards {
-  display: grid;
-  grid-template-columns: 1fr;
+  // display: grid;
+  // grid-template-columns: 1fr;
   gap: $size-large;
 
-  @include tablet {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  @include display-flex;
 
-  @include desktop {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  // @include tablet {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
+
+  // @include desktop {
+  //   grid-template-columns: repeat(5, 1fr);
+  // }
 }

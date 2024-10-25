@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: $size-large;
@@ -15,8 +15,8 @@
     font-weight: bold;
   }
 
-    @include tablet {
-      flex-direction: row;
+    // @include tablet {
+      // flex-direction: row;
   //     padding: $size-default * 2.5;
-    }
+    // }
 }

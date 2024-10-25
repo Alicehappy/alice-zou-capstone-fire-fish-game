@@ -96,11 +96,11 @@ function AnimalSelectionPage() {
                 }
                 className="animal-card__image"
               />
-              {selectedAnimals[category.id] && (
-                <p className="animal-card__name">
-                  {selectedAnimals[category.id].name}
-                </p>
-              )}
+              {/* {selectedAnimals[category.id] && (
+                  <p className="animal-card__name">
+                    {selectedAnimals[category.id].name}
+                  </p>
+                )} */}
             </div>
 
             <DropdownComponent
@@ -110,7 +110,7 @@ function AnimalSelectionPage() {
                 key: animal.id,
               }))}
               onSelect={(value) => handleAnimalSelect(value, category.id)}
-              placeholder={`Select a ${category.name} animal`}
+              placeholder={`Select an animal`}
             />
           </div>
         ))}

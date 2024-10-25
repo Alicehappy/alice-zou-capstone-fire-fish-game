@@ -4,5 +4,6 @@
 .game {
   text-align: center;
   padding: 2rem;
-  background-color: #b5e7a0;
+  background-color: map-get($colors-primary, background-accent);
+  flex-grow: 1;
 }
