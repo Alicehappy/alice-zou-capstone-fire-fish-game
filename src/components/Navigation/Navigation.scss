@@ -92,11 +92,11 @@
     display: block;
     padding: $size-default;
     text-decoration: none;
-    color: map-get($colors-primary, global-white);
+    color: map-get($colors-primary, global-text);
     @include h2;
 
     &:hover {
-      color: map-get($colors-primary, interactive-elements);
+      color: mix(white, map-get($colors-primary, global-text), 30%);
     }
 
     &--active {

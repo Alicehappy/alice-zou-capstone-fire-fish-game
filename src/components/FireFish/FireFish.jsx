@@ -1,13 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-// import { useAnimations } from "../../hooks/useAnimations";
 import { gsap } from "gsap";
 import "./FireFish.scss";
 
 function FireFish({ letter, onLetterCaught }) {
   const fishRef = useRef(null);
   const [isCaught, setIsCaught] = useState(false);
-
-  //   useAnimations(fishRef, { x: 500, duration: 5, repeat: -1 });
 
   const getRandomSpeed = () => Math.random() * 5 + 5;
 
