@@ -33,7 +33,6 @@ function TypingGamePage() {
   }, []);
 
   const handleLetterCaught = (id) => {
-    console.log(`Caught fish with letter: ${id} of letter`);
     setScore((prevScore) => prevScore + 10);
     setFishArray((prevFishArray) =>
       prevFishArray.filter((letter) => letter.id !== id)
@@ -73,7 +72,6 @@ function TypingGamePage() {
         Animal Word: {animal.name}{" "}
       </h2>
       {fishArray.map((fish) => {
-        console.log(fish.id);
         return (
           <FireFish
             key={fish.id}

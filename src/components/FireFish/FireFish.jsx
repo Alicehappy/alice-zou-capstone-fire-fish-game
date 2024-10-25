@@ -1,58 +1,81 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import "./FireFish.scss";
 
 function FireFish({ letter, onLetterCaught }) {
   const fishRef = useRef(null);
-  const [isCaught, setIsCaught] = useState(false);
+  const isCaughtRef = useRef(false);
+  const timeline = useRef(null);
 
   const getRandomSpeed = () => Math.random() * 5 + 5;
 
   useEffect(() => {
-    const animateFish = () => {
-      if (!isCaught) {
-        const tl = gsap.timeline({ repeat: -1 });
-
-        tl.to(fishRef.current, {
+    if (fishRef.current && !isCaughtRef.current) {
+      const fishAnimation = gsap.fromTo(
+        fishRef.current,
+        { x: -100 },
+        {
           x: window.innerWidth + 100,
           duration: getRandomSpeed(),
           ease: "linear",
-        });
-      }
-    };
+          repeat: -1,
+          onRepeat: () => gsap.set(fishRef.current, { x: -100 }),
+        }
+      );
 
-    animateFish();
-  }, [isCaught]);
+      return () => fishAnimation.kill();
+    }
+  }, []);
 
   useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key.toLowerCase() === letter.toLowerCase()) {
-        setIsCaught(true);
-        gsap.to(fishRef.current, {
-          opacity: 0,
-          scale: 0,
-          duration: 1,
-          onComplete: onLetterCaught,
-        });
+    if (fishRef.current) {
+      timeline.current = gsap.timeline({ paused: true });
+
+      timeline.current.to(fishRef.current, {
+        rotation: 15,
+        yoyo: true,
+        repeat: 3,
+        duration: 0.2,
+        ease: "sine.inOut",
+      });
+
+      timeline.current.to(fishRef.current, {
+        opacity: 0,
+        scale: 0.1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: onLetterCaught,
+      });
+    }
+  }, [onLetterCaught]);
+
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (
+        event.key.toLowerCase() === letter.toLowerCase() &&
+        fishRef.current &&
+        !isCaughtRef.current
+      ) {
+        console.log("Correct key pressed!");
+        isCaughtRef.current = true;
+        timeline.current.play();
       }
-    };
+    },
+    [letter]
+  );
 
+  useEffect(() => {
     window.addEventListener("keypress", handleKeyPress);
-
-    return () => {
-      window.removeEventListener("keypress", handleKeyPress);
-    };
-  }, [letter, onLetterCaught]);
+    return () => window.removeEventListener("keypress", handleKeyPress);
+  }, [handleKeyPress]);
 
   return (
-    !isCaught && (
-      <div ref={fishRef} className="fish-game">
-        <div className="fish">
-          <span className="fish__icon">🐟</span>
-          <span className="letter">{letter}</span>
-        </div>
+    <div ref={fishRef} className="fish-game">
+      <div className="fish">
+        <span className="fish__icon">🐟</span>
+        <span className="letter">{letter}</span>
       </div>
-    )
+    </div>
   );
 }
 
