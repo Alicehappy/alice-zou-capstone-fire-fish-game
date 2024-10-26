@@ -6,6 +6,7 @@ function FireFish({ letter, onLetterCaught }) {
   const fishRef = useRef(null);
   const isCaughtRef = useRef(false);
   const timeline = useRef(null);
+  const fireRef = useRef(null); // Reference for the fire effect
 
   const getRandomSpeed = () => Math.random() * 5 + 5;
 
@@ -31,21 +32,35 @@ function FireFish({ letter, onLetterCaught }) {
     if (fishRef.current) {
       timeline.current = gsap.timeline({ paused: true });
 
-      timeline.current.to(fishRef.current, {
-        rotation: 15,
-        yoyo: true,
-        repeat: 3,
-        duration: 0.2,
-        ease: "sine.inOut",
-      });
+      timeline.current
+        .set(fireRef.current, { display: "block" })
+        .to(fishRef.current, {
+          rotation: 15,
+          yoyo: true,
+          repeat: 3,
+          duration: 0.2,
+          ease: "sine.inOut",
+        });
 
       timeline.current.to(fishRef.current, {
-        opacity: 0,
-        scale: 0.1,
-        duration: 1,
+        x: window.innerWidth * 0.60 - 50,
+        y: -90,
+        scale: 0.5,
+        duration: 1.5,
         ease: "power2.out",
-        onComplete: onLetterCaught,
+        onComplete: () => {
+          gsap.set(fishRef.current, { display: "none" });
+          onLetterCaught();
+        },
       });
+
+      // timeline.current.to(fishRef.current, {
+      //   opacity: 0,
+      //   scale: 0.1,
+      //   duration: 1,
+      //   ease: "power2.out",
+      //   onComplete: onLetterCaught,
+      // });
     }
   }, [onLetterCaught]);
 
@@ -74,6 +89,9 @@ function FireFish({ letter, onLetterCaught }) {
       <div className="fish">
         <span className="fish__icon">🐟</span>
         <span className="letter">{letter}</span>
+      </div>
+      <div ref={fireRef} className="fire-effect">
+        🔥
       </div>
     </div>
   );

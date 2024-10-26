@@ -91,6 +91,7 @@ function TypingGamePage() {
       <h2 className="game__detail game__detail--word">
         Animal Word: {animal.name}{" "}
       </h2>
+      <div className="bucket">🪣</div>
       {fishArray.map((fish) => {
         return (
           <FireFish

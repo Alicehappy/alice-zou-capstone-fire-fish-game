@@ -11,3 +11,11 @@
   height: 90vh;
   overflow: hidden;
 }
+
+.bucket {
+  position: absolute;
+  top: $size-default * 1.8;
+  left: 65%;
+  transform: translateX(-65%);
+  font-size: $size-large * 2;
+}
