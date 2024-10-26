@@ -4,22 +4,71 @@
 .home {
   @include page;
 
+  @include tablet {
+    display: grid;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 1fr 2fr 2fr;
+    gap: $size-default * 1.25;
+  }
+  @include desktop {
+    gap: $size-large;
+  }
   &__title {
     @include h1;
-    margin-bottom: $size-default;
+    // margin-bottom: $size-default;
 
     @include tablet {
-      margin-bottom: $size-default * 2;
+      // margin-bottom: $size-default * 2;
+      // width: 100%;
+      // order: -2;
+      grid-column: 1 / span 2;
+      justify-self: center;
+    }
+  }
+
+  &__input {
+    grid-row: 3;
+    grid-column: 2;
+    align-self: start;
+  }
+
+  &__actions {
+    @include tablet {
+      grid-row: 4;
+      grid-column: 2;
+      align-self: end;
+      gap: $size-default;
+      flex-direction: column;
+      @include display-flex;
+    }
+    @include desktop {
+      flex-direction: row;
     }
   }
 
   &__button {
+
+
     &--typing-game {
       display: none;
 
       @include tablet {
         display: block;
+        // width: 40%;
       }
     }
+  }
+}
+
+.fish-bubble-game {
+  @include tablet {
+    grid-row: 3 / span 2;
+  }
+}
+.fish-bubble-title {
+  @include tablet {
+    grid-row: 2;
   }
 }

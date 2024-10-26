@@ -11,10 +11,10 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
   const timeline = useRef(null);
   const fireRef = useRef(null);
 
-  const createFishPath = () => [
-    { x: 0, y: 0 },
-    { x: bucketPosition.x - 100, y: bucketPosition.y - 300 },
-    { x: bucketPosition.x, y: bucketPosition.y },
+  const createFishPath = (index) => [
+    // { x: 0, y: 0 },
+    { x: bucketPosition.x - 100, y: index * -100 - 190 },
+    { x: bucketPosition.x - 100, y: index * -100 - 100 },
   ];
 
   const getRandomSpeed = () => Math.random() * 5 + 5;
@@ -38,7 +38,7 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
   }, []);
 
   useEffect(() => {
-    const y = -90 - 100 * index;
+    const y = -95 - 100 * index;
     if (fishRef.current) {
       timeline.current = gsap.timeline({ paused: true });
 
@@ -61,7 +61,7 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
 
       timeline.current.to(fishRef.current, {
         motionPath: {
-          path: createFishPath(),
+          path: createFishPath(index),
           autoRotate: true,
           duration: 2,
           ease: "power1.inOut",
@@ -69,6 +69,8 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
       });
 
       timeline.current.to(fishRef.current, {
+        x: bucketPosition.x - 120,
+        y: y,
         scale: 0,
         opacity: 0,
         duration: 0.5,

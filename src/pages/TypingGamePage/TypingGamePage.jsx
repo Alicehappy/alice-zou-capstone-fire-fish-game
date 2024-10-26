@@ -91,32 +91,34 @@ function TypingGamePage() {
   }
 
   return (
-    <div
-      className="game"
-      style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
-    >
-      <h1 className="game__detail game__detail--score">Score: {score}</h1>
-      <h2 className="game__detail game__detail--timing">
-        Time Remaining: {timer}s{" "}
-      </h2>
-      <h2 className="game__detail game__detail--word">
-        Animal Word: {animal.name}{" "}
-      </h2>
-      <div className="bucket">🪣</div>
-      {fishArray.map((fish, index) => {
-        return (
-          <FireFish
-            key={fish.id}
-            index={index}
-            letter={fish.char}
-            onLetterCaught={() => handleLetterCaught(fish.id)}
-            bucketPosition={bucketPosition}
-          />
-        );
-      })}
-      <CoralReef className="game__coral" />
-      {bubbles}
-    </div>
+    <>
+      <div
+        className="game"
+        style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
+      >
+        <h1 className="game__detail game__detail--score">Score: {score}</h1>
+        <h2 className="game__detail game__detail--timing">
+          Time Remaining: {timer}s{" "}
+        </h2>
+        <h2 className="game__detail game__detail--word">
+          Animal Word: {animal.name}{" "}
+        </h2>
+        <div className="bucket">🪣</div>
+        {fishArray.map((fish, index) => {
+          return (
+            <FireFish
+              key={fish.id}
+              index={index}
+              letter={fish.char}
+              onLetterCaught={() => handleLetterCaught(fish.id)}
+              bucketPosition={bucketPosition}
+            />
+          );
+        })}
+          <CoralReef className="game__coral" />
+          {bubbles}
+      </div>
+    </>
   );
 }
 

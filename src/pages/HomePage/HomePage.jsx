@@ -36,12 +36,13 @@ function HomePage() {
     <div className="home">
       <h1 className="home__title">Welcome to FireFish Game</h1>
       <Input
+        className="home__input"
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Enter your name"
       />
-
+      <div className="home__actions">
       <Button
         className="home__button--typing-game"
         onClick={() => handleGameStart("typing")}
@@ -51,12 +52,19 @@ function HomePage() {
         &nbsp; Start Typing Game
       </Button>
 
-      <Button onClick={() => handleGameStart("animal")} variant="primary">
+      <Button
+        className="home__button--animal-selection"
+        onClick={() => handleGameStart("animal")}
+        variant="primary"
+      >
         <FontAwesomeIcon icon={faPaw} />
         &nbsp; Start Animal Selection Game
       </Button>
-
-      <FishBubbleGame />
+      </div>
+      <h2 className="fish-bubble-title">
+        Click to make the fish pop the bubble!
+      </h2>
+      <FishBubbleGame className="fish-bubble-game" />
     </div>
   );
 }

@@ -1,27 +1,34 @@
+@use "../../styles/partials/variables" as *;
+
 .game-area {
   position: relative;
   width: 100%;
-  height: 300px;
-  border: 2px solid #b5e7a0;
+  height: $size-default * 18.75;
+  border: $border-fish-bubble-game-boarder;
+  border-radius: $size-small;
   overflow: hidden;
-  background: linear-gradient(to top, #72d6c9, #b5e7a0);
+  background: linear-gradient(
+    to top,
+    map-get($colors-fish-bubble-gameboard, ocean-bottom),
+    map-get($colors-fish-bubble-gameboard, ocean-top)
+  );
   cursor: pointer;
 }
 
 .fish {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  transition: left 0.2s ease, top 0.2s ease; /* For smooth movement */
+  width: $size-default * 3.125;
+  height: $size-default * 3.125;
+  transition: left 0.2s ease, top 0.2s ease;
 }
 
 .bubble {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: $size-default * 1.25;
+  height: $size-default * 1.25;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 $size-default * 0.625 rgba(255, 255, 255, 0.8);
   animation: float 6s linear infinite;
 }
 

@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 .fish-game {
   z-index: 10;
   position: relative;
@@ -10,10 +12,12 @@
 
 .fish {
   font-size: 3rem;
-  display: inline-block;
+  align-items:center;
+  @include display-flex;
   &__icon {
     transform: scaleX(-1);
     display: inline-block;
+    filter: hue-rotate(110deg);
   }
 }
 
@@ -25,6 +29,7 @@
   border-radius: 5px;
   margin-left: 10px;
   transition: all 0.5s ease;
+  text-transform: capitalize;
 }
 
 .fire-effect {

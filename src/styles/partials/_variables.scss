@@ -41,3 +41,10 @@ $size-large: 2rem;
 $size-tiny: 0.25rem;
 
 $border-default: 0.0625rem solid map-get($colors-secondary, outlines);
+$border-fish-bubble-game-boarder: 0.0625rem solid
+  map-get($colors-primary, background-accent);
+
+$colors-fish-bubble-gameboard: (
+  ocean-bottom: #72d6c9,
+  ocean-top: #b5e7a0,
+);

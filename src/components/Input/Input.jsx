@@ -1,9 +1,9 @@
 import "./Input.scss";
 
-function Input({ value, onChange, placeholder }) {
+function Input({ className, value, onChange, placeholder }) {
   return (
     <input
-      className="input"
+      className={`${className} input`}
       type="text"
       value={value}
       onChange={onChange}
