@@ -2,14 +2,25 @@
 @use "../../styles/partials/mixins" as *;
 
 .game {
-  text-align: center;
-  padding: 2rem;
+  // text-align: center;
   background-color: map-get($colors-primary, background-accent);
+  // background: radial-gradient(circle at 50% 0%, #ffe5be, map-get($colors-primary, background-accent));
+  
+  background: var(--bg-url) center top no-repeat, map-get($colors-primary, background-accent) ;
   flex-grow: 1;
   position: relative;
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
   overflow: hidden;
+  padding-top: $size-large;
+  @include responsive-padding;
+
+  &__coral {
+    margin: 0 $size-large * -1;
+    // height: 200px;
+    // object-fit: cover;
+    // background-position: 10% 50%;
+  }
 }
 
 .bucket {

@@ -2,13 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .navigation {
-  // visibility: hidden;
   position: relative;
 
 
   &:after {
     content: " ";
-    // background: rgba(244, 0, 0, 0.4);
     position: absolute;
     top: 0;
     right: 0;
@@ -47,15 +45,12 @@
     top: 40px;
     right: 0;
     width: 200px;
-    background-color: map-get($colors-primary, interactive-elements);
+    background-color: map-get($colors-secondary, background-neutral);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     opacity: 1;
-    // visibility: hidden;
-
-    // transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    // max-height: none;
+    z-index: 10;
 
     @include display-flex;
     @include tablet {

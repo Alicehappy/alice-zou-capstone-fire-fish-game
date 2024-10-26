@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  background-color: map-get($colors-ocean, sea-bed);
+  background: linear-gradient(to bottom, transparent, map-get($colors-ocean, sea-bed));
   overflow: hidden;
 }
 

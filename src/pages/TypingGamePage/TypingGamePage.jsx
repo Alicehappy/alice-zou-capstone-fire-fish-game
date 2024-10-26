@@ -6,6 +6,9 @@ import "./TypingGamePage.scss";
 import Bubble from "../../components/Bubble/Bubble";
 import CoralReef from "../../components/CoralReef/CoralReef";
 
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+const PORT = import.meta.env.VITE_PORT;
+
 function TypingGamePage() {
   const [score, setScore] = useState(0);
   const [fishArray, setFishArray] = useState([]);
@@ -83,27 +86,35 @@ function TypingGamePage() {
   }
 
   return (
-    <div className="game">
-      <h1 className="game__detail game__detail--score">Score: {score}</h1>
-      <h2 className="game__detail game__detail--timing">
-        Time Remaining: {timer}s{" "}
-      </h2>
-      <h2 className="game__detail game__detail--word">
-        Animal Word: {animal.name}{" "}
-      </h2>
-      <div className="bucket">🪣</div>
-      {fishArray.map((fish) => {
-        return (
-          <FireFish
-            key={fish.id}
-            letter={fish.char}
-            onLetterCaught={() => handleLetterCaught(fish.id)}
-          />
-        );
-      })}
-      <CoralReef />
-      {bubbles}
-    </div>
+    <>
+      <div className="game" style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}>
+        <h1 className="game__detail game__detail--score">Score: {score}</h1>
+        <h2 className="game__detail game__detail--timing">
+          Time Remaining: {timer}s{" "}
+        </h2>
+        <h2 className="game__detail game__detail--word">
+          Animal Word: {animal.name}{" "}
+        </h2>
+        <div className="bucket">🪣</div>
+        {fishArray.map((fish, index) => {
+          return (
+            <FireFish
+              key={fish.id}
+              index={index}
+              letter={fish.char}
+              onLetterCaught={() => handleLetterCaught(fish.id)}
+            />
+          );
+        })}
+        {/* <CoralReef className="game__coral" /> */}
+        {/* <img className="game__coral"
+          src={`${API_URL}:${PORT}/images/coral_reef.webp`}
+          alt="Coral image on the ocean sea bed"
+        /> */}
+        <div className="game__coral" style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}></div>
+        {bubbles}
+      </div>
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import "./FireFish.scss";
 
-function FireFish({ letter, onLetterCaught }) {
+function FireFish({ index, letter, onLetterCaught }) {
   const fishRef = useRef(null);
   const isCaughtRef = useRef(false);
   const timeline = useRef(null);
@@ -29,6 +29,7 @@ function FireFish({ letter, onLetterCaught }) {
   }, []);
 
   useEffect(() => {
+    const y = -90 - 100 * index;
     if (fishRef.current) {
       timeline.current = gsap.timeline({ paused: true });
 
@@ -44,7 +45,7 @@ function FireFish({ letter, onLetterCaught }) {
 
       timeline.current.to(fishRef.current, {
         x: window.innerWidth * 0.60 - 50,
-        y: -90,
+        y: y,
         scale: 0.5,
         duration: 1.5,
         ease: "power2.out",

@@ -1,8 +1,8 @@
 import "./CoralReef.scss";
 
-function CoralReef() {
+function CoralReef({className}) {
   return (
-    <div className="coral-reef">
+    <div className={`${className} coral-reef`}>
       <div className="coral coral--1"></div>
       <div className="coral coral--2"></div>
       <div className="coral coral--3"></div>
