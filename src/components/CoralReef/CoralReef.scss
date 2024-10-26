@@ -1,0 +1,51 @@
+@use "../../styles/partials/variables" as *;
+
+.coral-reef {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  background-color: map-get($colors-ocean, sea-bed);
+  overflow: hidden;
+}
+
+.coral {
+  width: 40px;
+  height: 80px;
+  background-color: map-get($colors-ocean, coral-first);
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-10deg);
+  position: relative;
+}
+
+.coral--1 {
+  width: 60px;
+  height: 100px;
+  background-color: map-get($colors-ocean, coral-second);
+}
+
+.coral--2 {
+  background-color: map-get($colors-ocean, coral-third);
+  transform: rotate(15deg);
+}
+
+.coral--3 {
+  width: 50px;
+  height: 70px;
+  background-color: map-get($colors-ocean, coral-fourth);
+  transform: rotate(-5deg);
+}
+
+.coral--4 {
+  background-color: map-get($colors-ocean, coral-fifth);
+  transform: rotate(20deg);
+}
+
+.coral--5 {
+  width: 80px;
+  height: 110px;
+  background-color: map-get($colors-ocean, coral-sixth);
+}

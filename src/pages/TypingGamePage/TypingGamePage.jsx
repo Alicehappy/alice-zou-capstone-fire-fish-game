@@ -3,6 +3,8 @@ import FireFish from "../../components/FireFish/FireFish";
 import { useNavigate } from "react-router-dom";
 import { fetchRandomAnimal } from "../../services/animals-api";
 import "./TypingGamePage.scss";
+import Bubble from "../../components/Bubble/Bubble";
+import CoralReef from "../../components/CoralReef/CoralReef";
 
 function TypingGamePage() {
   const [score, setScore] = useState(0);
@@ -11,6 +13,24 @@ function TypingGamePage() {
   const [timer, setTimer] = useState(30);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [bubbles, setBubbles] = useState([]);
+
+  const addBubbles = (count) => {
+    const newBubbles = Array.from({ length: count }, () => (
+      <Bubble key={Math.random()} />
+    ));
+    setBubbles((prev) => [...prev, ...newBubbles]);
+  };
+
+  useEffect(() => {
+    addBubbles(10);
+
+    const bubbleInterval = setInterval(() => {
+      addBubbles(10);
+    }, 1000);
+
+    return () => clearInterval(bubbleInterval);
+  }, [navigate]);
 
   useEffect(() => {
     const loadAnimalWord = async () => {
@@ -80,6 +100,8 @@ function TypingGamePage() {
           />
         );
       })}
+      <CoralReef />
+      {bubbles}
     </div>
   );
 }

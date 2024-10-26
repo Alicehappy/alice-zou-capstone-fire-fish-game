@@ -6,4 +6,8 @@
   padding: 2rem;
   background-color: map-get($colors-primary, background-accent);
   flex-grow: 1;
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
 }

@@ -1,0 +1,15 @@
+import "./CoralReef.scss";
+
+function CoralReef() {
+  return (
+    <div className="coral-reef">
+      <div className="coral coral--1"></div>
+      <div className="coral coral--2"></div>
+      <div className="coral coral--3"></div>
+      <div className="coral coral--4"></div>
+      <div className="coral coral--5"></div>
+    </div>
+  );
+}
+
+export default CoralReef;
