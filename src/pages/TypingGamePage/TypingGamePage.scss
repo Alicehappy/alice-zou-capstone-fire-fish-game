@@ -2,11 +2,20 @@
 @use "../../styles/partials/mixins" as *;
 
 .game {
-  // text-align: center;
-  background-color: map-get($colors-primary, background-accent);
-  // background: radial-gradient(circle at 50% 0%, #ffe5be, map-get($colors-primary, background-accent));
-  
-  background: var(--bg-url) center top no-repeat, map-get($colors-primary, background-accent) ;
+  background: radial-gradient(
+    circle at top center,
+    rgba(255, 223, 186, 1) 13%,
+    rgba(173, 216, 230, 1) 30%,
+    rgba(152, 251, 152, 0.7) 50%,
+    rgba(72, 209, 204, 0.8) 70%,
+    rgba(51, 214, 204, 0.9) 85%,
+    rgba(38, 194, 195, 0.85) 100%
+  );
+
+  background-size: 150% 150%; /* Ensures smooth transitions */
+  background-attachment: fixed; /* Parallax effect when scrolling */
+  animation: shimmer 15s infinite alternate ease-in-out;
+
   flex-grow: 1;
   position: relative;
   width: 100vw;
@@ -16,10 +25,15 @@
   @include responsive-padding;
 
   &__coral {
-    margin: 0 $size-large * -1;
-    // height: 200px;
-    // object-fit: cover;
-    // background-position: 10% 50%;
+    margin: 0 $size-default * -1.5;
+
+    @include tablet {
+      margin: 0 $size-large * -1;
+    }
+
+    @include desktop {
+      margin: 0 $size-default * -2.5;
+    }
   }
 }
 
@@ -29,4 +43,13 @@
   left: 65%;
   transform: translateX(-65%);
   font-size: $size-large * 2;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }

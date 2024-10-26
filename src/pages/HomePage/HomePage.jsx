@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFish, faPaw } from "@fortawesome/free-solid-svg-icons";
 import { registerUser } from "../../services/user-api";
+import FishBubbleGame from "../../components/FishBubbleGame/FishBubbleGame";
 
 function HomePage() {
   const [username, setUsername] = useState(
@@ -54,6 +55,8 @@ function HomePage() {
         <FontAwesomeIcon icon={faPaw} />
         &nbsp; Start Animal Selection Game
       </Button>
+
+      <FishBubbleGame />
     </div>
   );
 }

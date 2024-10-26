@@ -24,11 +24,11 @@
   padding: 5px;
   border-radius: 5px;
   margin-left: 10px;
-  transition: all 0.5s ease; /* Smooth transitions for letter removal */
+  transition: all 0.5s ease;
 }
 
 .fire-effect {
-  display: none; /* Hidden initially */
+  display: none;
   position: absolute;
   font-size: 2rem;
   top: 0;
@@ -36,7 +36,6 @@
   animation: fire-blaze 0.5s infinite;
 }
 
-/* Simple fire animation */
 @keyframes fire-blaze {
   0%,
   100% {
@@ -45,4 +44,15 @@
   50% {
     transform: scale(1.2);
   }
+}
+
+.bucket {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 0;
+  left: 65%;
+  background-color: #333;
+  border-radius: 50%;
+  overflow: hidden;
 }

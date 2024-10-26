@@ -13,10 +13,15 @@ function TypingGamePage() {
   const [score, setScore] = useState(0);
   const [fishArray, setFishArray] = useState([]);
   const [animal, setAnimal] = useState("dolphin");
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(60);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [bubbles, setBubbles] = useState([]);
+
+  const bucketPosition = {
+    x: window.innerWidth * 0.65,
+    y: window.innerHeight - 80,
+  };
 
   const addBubbles = (count) => {
     const newBubbles = Array.from({ length: count }, () => (
@@ -86,35 +91,32 @@ function TypingGamePage() {
   }
 
   return (
-    <>
-      <div className="game" style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}>
-        <h1 className="game__detail game__detail--score">Score: {score}</h1>
-        <h2 className="game__detail game__detail--timing">
-          Time Remaining: {timer}s{" "}
-        </h2>
-        <h2 className="game__detail game__detail--word">
-          Animal Word: {animal.name}{" "}
-        </h2>
-        <div className="bucket">🪣</div>
-        {fishArray.map((fish, index) => {
-          return (
-            <FireFish
-              key={fish.id}
-              index={index}
-              letter={fish.char}
-              onLetterCaught={() => handleLetterCaught(fish.id)}
-            />
-          );
-        })}
-        {/* <CoralReef className="game__coral" /> */}
-        {/* <img className="game__coral"
-          src={`${API_URL}:${PORT}/images/coral_reef.webp`}
-          alt="Coral image on the ocean sea bed"
-        /> */}
-        <div className="game__coral" style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}></div>
-        {bubbles}
-      </div>
-    </>
+    <div
+      className="game"
+      style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
+    >
+      <h1 className="game__detail game__detail--score">Score: {score}</h1>
+      <h2 className="game__detail game__detail--timing">
+        Time Remaining: {timer}s{" "}
+      </h2>
+      <h2 className="game__detail game__detail--word">
+        Animal Word: {animal.name}{" "}
+      </h2>
+      <div className="bucket">🪣</div>
+      {fishArray.map((fish, index) => {
+        return (
+          <FireFish
+            key={fish.id}
+            index={index}
+            letter={fish.char}
+            onLetterCaught={() => handleLetterCaught(fish.id)}
+            bucketPosition={bucketPosition}
+          />
+        );
+      })}
+      <CoralReef className="game__coral" />
+      {bubbles}
+    </div>
   );
 }
 

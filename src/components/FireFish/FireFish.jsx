@@ -1,12 +1,21 @@
 import { useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import "./FireFish.scss";
 
-function FireFish({ index, letter, onLetterCaught }) {
+gsap.registerPlugin(MotionPathPlugin);
+
+function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
   const fishRef = useRef(null);
   const isCaughtRef = useRef(false);
   const timeline = useRef(null);
-  const fireRef = useRef(null); // Reference for the fire effect
+  const fireRef = useRef(null);
+
+  const createFishPath = () => [
+    { x: 0, y: 0 },
+    { x: bucketPosition.x - 100, y: bucketPosition.y - 300 },
+    { x: bucketPosition.x, y: bucketPosition.y },
+  ];
 
   const getRandomSpeed = () => Math.random() * 5 + 5;
 
@@ -43,18 +52,43 @@ function FireFish({ index, letter, onLetterCaught }) {
           ease: "sine.inOut",
         });
 
+      //Fish Flying to bucket with an arc
       timeline.current.to(fishRef.current, {
-        x: window.innerWidth * 0.60 - 50,
-        y: y,
-        scale: 0.5,
-        duration: 1.5,
-        ease: "power2.out",
-        onComplete: () => {
-          gsap.set(fishRef.current, { display: "none" });
-          onLetterCaught();
+        rotation: -90,
+        duration: 0.2,
+        ease: "sine.inOut",
+      });
+
+      timeline.current.to(fishRef.current, {
+        motionPath: {
+          path: createFishPath(),
+          autoRotate: true,
+          duration: 2,
+          ease: "power1.inOut",
         },
       });
 
+      timeline.current.to(fishRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        onComplete: onLetterCaught,
+      });
+
+      //Fish flying to bucket directly
+      // timeline.current.to(fishRef.current, {
+      //   x: window.innerWidth * 0.6 - 50,
+      //   y: y,
+      //   scale: 0.5,
+      //   duration: 1.5,
+      //   ease: "power2.out",
+      //   onComplete: () => {
+      //     gsap.set(fishRef.current, { display: "none" });
+      //     onLetterCaught();
+      //   },
+      // });
+
+      // Fish just fades out after wiggling
       // timeline.current.to(fishRef.current, {
       //   opacity: 0,
       //   scale: 0.1,
