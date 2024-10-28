@@ -12,7 +12,7 @@
 
 .fish {
   font-size: 3rem;
-  align-items:center;
+  align-items: center;
   @include display-flex;
   &__icon {
     transform: scaleX(-1);
@@ -49,15 +49,4 @@
   50% {
     transform: scale(1.2);
   }
-}
-
-.bucket {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  bottom: 0;
-  left: 65%;
-  background-color: #333;
-  border-radius: 50%;
-  overflow: hidden;
 }

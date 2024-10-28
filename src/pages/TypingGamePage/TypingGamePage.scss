@@ -2,6 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .game {
+  z-index: -1;
   background: radial-gradient(
     circle at top center,
     rgba(255, 223, 186, 1) 13%,
@@ -12,8 +13,8 @@
     rgba(38, 194, 195, 0.85) 100%
   );
 
-  background-size: 150% 150%; /* Ensures smooth transitions */
-  background-attachment: fixed; /* Parallax effect when scrolling */
+  background-size: 150% 150%;
+  background-attachment: fixed;
   animation: shimmer 15s infinite alternate ease-in-out;
 
   flex-grow: 1;

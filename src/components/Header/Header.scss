@@ -2,11 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  // flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: $size-large;
-  background-color: map-get($colors-primary, interactive-elements);
+  background-color: rgba(255, 255, 227, 0.5);
+  backdrop-filter: blur(8px);
   color: map-get($text-colors, primary);
 
   @include display-flex;
@@ -15,8 +15,4 @@
     font-weight: bold;
   }
 
-    // @include tablet {
-      // flex-direction: row;
-  //     padding: $size-default * 2.5;
-    // }
 }

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import { saveScore } from "../../services/scoreboard-api";
+import PeacefulBubblesParticles from "../../components/PeacefulBubblesParticles/PeacefulBubblesParticles";
+import FishParticlesGame from "../../components/FishParticlesGame/FishParticlesGame";
 
 const port = import.meta.env.VITE_PORT;
 const backendURL = import.meta.env.VITE_BACKEND_URL;
@@ -36,20 +38,25 @@ function SubmitScorePage() {
 
   const handleOnTryAgain = () => {
     navigate("/typing-game");
-  }
+  };
 
   return (
     <div className="submit-score">
       <h1 className="submit-score__title">Game Over!</h1>
+      <PeacefulBubblesParticles key="submit-score" />
       <p className="submit-score__score">Your score: {score}</p>
       {username && <p className="submit-score__player">Player: {username}</p>}
       <div className="submit-score__actions">
-      <Button variant="secondary" onClick={submitScore}>Submit Score</Button>
-      <Button onClick={handleOnTryAgain}>Try Again</Button>
+        <Button variant="secondary" onClick={submitScore}>
+          Submit Score
+        </Button>
+        <Button onClick={handleOnTryAgain}>Try Again</Button>
       </div>
       {submissionStatus && (
         <p className="submit-score__status">{submissionStatus}</p>
       )}
+      <h2 className="submit-score__fish-title">A Sleeping Fish in Aquarium</h2>
+      <FishParticlesGame className="submit-score__fish" />
     </div>
   );
 }

@@ -12,7 +12,6 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
   const fireRef = useRef(null);
 
   const createFishPath = (index) => [
-    // { x: 0, y: 0 },
     { x: bucketPosition.x - 100, y: index * -100 - 190 },
     { x: bucketPosition.x - 100, y: index * -100 - 100 },
   ];
@@ -52,7 +51,6 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
           ease: "sine.inOut",
         });
 
-      //Fish Flying to bucket with an arc
       timeline.current.to(fishRef.current, {
         rotation: -90,
         duration: 0.2,
@@ -76,28 +74,6 @@ function FireFish({ index, letter, onLetterCaught, bucketPosition }) {
         duration: 0.5,
         onComplete: onLetterCaught,
       });
-
-      //Fish flying to bucket directly
-      // timeline.current.to(fishRef.current, {
-      //   x: window.innerWidth * 0.6 - 50,
-      //   y: y,
-      //   scale: 0.5,
-      //   duration: 1.5,
-      //   ease: "power2.out",
-      //   onComplete: () => {
-      //     gsap.set(fishRef.current, { display: "none" });
-      //     onLetterCaught();
-      //   },
-      // });
-
-      // Fish just fades out after wiggling
-      // timeline.current.to(fishRef.current, {
-      //   opacity: 0,
-      //   scale: 0.1,
-      //   duration: 1,
-      //   ease: "power2.out",
-      //   onComplete: onLetterCaught,
-      // });
     }
   }, [onLetterCaught]);
 

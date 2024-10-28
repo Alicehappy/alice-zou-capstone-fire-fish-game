@@ -97,9 +97,15 @@
     &--active {
       border-bottom: $border-default;
     }
-  }
 
-  // @include tablet {
-  //   visibility: visible;
-  // }
+    &--scoreboard {
+      @include tablet {
+        display: none;
+      }
+
+      @include desktop {
+        display: block;
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@
   @include page;
 
   &__title {
+    color: map-get($text-colors, light);
     margin-bottom: $size-default;
   }
 
@@ -46,4 +47,17 @@
     color: map-get($colors-status, error);
     font-weight: bold;
   }
+}
+
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+canvas {
+  z-index: 10; /* Ensure it's visible over other content */
 }

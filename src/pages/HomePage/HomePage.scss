@@ -6,8 +6,6 @@
 
   @include tablet {
     display: grid;
-    // flex-direction: row;
-    // flex-wrap: wrap;
     grid-template-columns: 3fr 2fr;
     grid-template-rows: 1fr 1fr 2fr 2fr;
     gap: $size-default * 1.25;
@@ -17,12 +15,8 @@
   }
   &__title {
     @include h1;
-    // margin-bottom: $size-default;
 
     @include tablet {
-      // margin-bottom: $size-default * 2;
-      // width: 100%;
-      // order: -2;
       grid-column: 1 / span 2;
       justify-self: center;
     }
@@ -35,6 +29,10 @@
   }
 
   &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $size-default;
+    width: 100%;
     @include tablet {
       grid-row: 4;
       grid-column: 2;
@@ -49,14 +47,11 @@
   }
 
   &__button {
-
-
     &--typing-game {
-      display: none;
+      display: block;
 
       @include tablet {
         display: block;
-        // width: 40%;
       }
     }
   }

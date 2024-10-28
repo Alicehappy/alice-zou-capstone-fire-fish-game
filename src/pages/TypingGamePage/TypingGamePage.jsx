@@ -13,7 +13,7 @@ function TypingGamePage() {
   const [score, setScore] = useState(0);
   const [fishArray, setFishArray] = useState([]);
   const [animal, setAnimal] = useState("dolphin");
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(90);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [bubbles, setBubbles] = useState([]);
@@ -23,22 +23,35 @@ function TypingGamePage() {
     y: window.innerHeight - 80,
   };
 
+  const getRandomX = () => {
+    const gameWidth =
+      document.querySelector(".game")?.offsetWidth || window.innerWidth;
+    return Math.random() * gameWidth;
+  };
+
   const addBubbles = (count) => {
-    const newBubbles = Array.from({ length: count }, () => (
-      <Bubble key={Math.random()} />
-    ));
+
+    const newBubbles = Array.from({ length: count }, () => ({
+      id: Math.random(),
+      x: getRandomX(),
+      y: window.innerHeight
+    }));
     setBubbles((prev) => [...prev, ...newBubbles]);
   };
 
   useEffect(() => {
-    addBubbles(10);
+    addBubbles(3);
 
     const bubbleInterval = setInterval(() => {
-      addBubbles(10);
-    }, 1000);
+      addBubbles(1);
+    }, 1500);
 
     return () => clearInterval(bubbleInterval);
-  }, [navigate]);
+  }, []);
+
+  const handleBubbleRemove = (id) => {
+    setBubbles((prev) => prev.filter((bubble) => bubble.id !== id));
+  };
 
   useEffect(() => {
     const loadAnimalWord = async () => {
@@ -91,34 +104,39 @@ function TypingGamePage() {
   }
 
   return (
-    <>
-      <div
-        className="game"
-        style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
-      >
-        <h1 className="game__detail game__detail--score">Score: {score}</h1>
-        <h2 className="game__detail game__detail--timing">
-          Time Remaining: {timer}s{" "}
-        </h2>
-        <h2 className="game__detail game__detail--word">
-          Animal Word: {animal.name}{" "}
-        </h2>
-        <div className="bucket">🪣</div>
-        {fishArray.map((fish, index) => {
-          return (
-            <FireFish
-              key={fish.id}
-              index={index}
-              letter={fish.char}
-              onLetterCaught={() => handleLetterCaught(fish.id)}
-              bucketPosition={bucketPosition}
-            />
-          );
-        })}
-          <CoralReef className="game__coral" />
-          {bubbles}
-      </div>
-    </>
+    <div
+      className="game"
+      style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
+    >
+      <h1 className="game__detail game__detail--score">Score: {score}</h1>
+      <h2 className="game__detail game__detail--timing">
+        Time Remaining: {timer}s{" "}
+      </h2>
+      <h2 className="game__detail game__detail--word">
+        Animal Word: {animal.name}{" "}
+      </h2>
+      <div className="bucket">🪣</div>
+      {fishArray.map((fish, index) => {
+        return (
+          <FireFish
+            key={fish.id}
+            index={index}
+            letter={fish.char}
+            onLetterCaught={() => handleLetterCaught(fish.id)}
+            bucketPosition={bucketPosition}
+          />
+        );
+      })}
+      <CoralReef className="game__coral" />
+      {bubbles.map((bubble) => (
+        <Bubble
+          key={bubble.id}
+          x={bubble.x}
+          y={bubble.y}
+          onRemove={() => handleBubbleRemove(bubble.id)}
+        />
+      ))}
+    </div>
   );
 }
 

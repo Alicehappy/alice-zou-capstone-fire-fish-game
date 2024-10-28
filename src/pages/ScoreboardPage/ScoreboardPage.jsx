@@ -2,6 +2,7 @@ import "./ScoreboardPage.scss";
 import { useEffect, useState } from "react";
 import Error from "../../components/Error/Error";
 import { fetchSores } from "../../services/scoreboard-api";
+import PeacefulBubblesParticles from "../../components/PeacefulBubblesParticles/PeacefulBubblesParticles";
 
 function ScoreboardPage() {
   const [scores, setScores] = useState([]);
@@ -25,6 +26,7 @@ function ScoreboardPage() {
   return (
     <div className="scoreboard">
       <h1 className="scoreboard__title">Top Scores</h1>
+      <PeacefulBubblesParticles key="scoreboard" />
       <ul className="scoreboard__list">
         {scores.map((score, index) => (
           <li key={score.id} className="scoreboard__item">
