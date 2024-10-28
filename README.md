@@ -1,3 +1,14 @@
+## Run the project
+Capstone frontend repo work together with Capstone backend repo:
+https://github.com/Alicehappy/alice-zou-capstone-fire-fish-game-api
+To run the project:
+
+npm install
+
+create .env file locally using the .env.sample file
+
+npm run dev
+
 # Project Title
 **Fire Fish Game**
 
@@ -31,10 +42,11 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
       •Allows users to save their score to the database and proceed to the scoreboard.
     4.Scoreboard Page:
      •Displays a list of the highest-scoring users limit to 10.
-    5.Animal Selection Game:
+    5.Animal Selection Game Page:
      •A page with five dropdowns, each containing animals from a specific category (underwater, wild animals, birds, insects, farm animals).
      •The player selects one animal from each category, and the game displays the chosen animals.
-     •Upon selecting three animals (one, two or three based on screen sizes), the game sends the selection to the backend. Either default sentence will be generated or user could type the sentence and save it to the database, and can also show the sentences saved.
+     •Upon selecting three animals (one, two or three based on screen sizes), then user can click create story button to navigate to story page
+    6. Story page: where user could write a story based on the selected animal in the animal seleciton game page.
 
 
 ## Implementation
@@ -45,6 +57,8 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
       •React with react-router-dom for navigation.
       •Sass for styling, using BEM naming conventions.
       •GSAP for animations (moving fish and other interactive elements).
+      •Particles for bubble particles animation effect
+      •Responsive Layout
       •Reusable React components to manage form elements, dropdowns, using third-party library react-dropdown to provide better customization ability.
       •Styles organized with partials, including mixins, variables, and animations.
       •Axios for API requests
@@ -76,7 +90,7 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
 
 ### Mockups
 
- •Mockups include five primary pages: Home, Typing Game, Submit Score, Scoreboard, and Animal Selection Page
+ •Mockups include six primary pages: Home, Typing Game, Submit Score, Scoreboard, Animal Selection Page, and Story page
  https://www.figma.com/design/iXW7FTQT38weJGkx0fce2V/Fire-Fish-Game?node-id=0-1&node-type=canvas&t=ADB4oIGkdrw9LbUt-0
 
 ### Data
@@ -84,42 +98,18 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
     •users: id, name, score
     •scores: id, user_id, score
     •animals: id, name, category, image
-
-    •one_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in one_category_default)
-    •one_category_default: id, name_category_one, default_sentence
-
-    •two_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in two_category_default)
-    •two_category_default: id, name_category_one, name_category_two
-
-    •three_category_default_sentence: id, category_id, default_sentence (category_id is foreign key in three_category_default)
-    •three_category_default: id, name_category_one, name_category_two, name_category_three
-
-    •one_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in one_category_customized)
-    •one_category_customized: id, name, customized_sentence
-
-    •two_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in two_category_customized)
-    •two_category_customized: id, name_category_one, name_category_two
-
-    •three_category_customized_sentence: id, category_id, customized_sentence (category_id is foreign key in three_category_customized)
-    •three_category_customized: id, name_category_one, name_category_two, name_category_three (category_id is foreign key in three_category_customized)
-
+    •stories: id, story_text, user_id
     •Data points will relate to users, scores for the typing game, and animal categories for the animal selection game.
 
-### Endpoints
+### Sample of Endpoints
 
     1. POST /api/score: Submit the user’s score.
      •Request Body: { name: "userName", score: 100 }
      •Response: { success: true, message: "Score saved!" }
     2. GET /api/scoreboard: Fetch the top scores.
      •Response: [{ name: "userName", score: 100 }, ...]
-    3. POST /api/generate-sentence: Send selected animals to generate a sentence.
-     •Request Body: { animals: ["Dolphin", "Lion", "Parrot"] }
-     •Response: { sentence: "The dolphin, lion, and parrot went on an adventure." }
-     4.	POST /api/save-sentence: Allows users to save a customized sentence based on their animal selection.
-     •Request Body: { "sentence": "My custom sentence with animals", "animals": ["Dolphin", "Lion"] }
-     •Response: { "success": true, "message": "Sentence saved!" }
-     
-     Note: for 3 and 4 is just an example, will have similar ones to generate default and customized sentence based on different categories that are chosen.
+    3. POST /api/stories: Save story of a user
+
 
 ## Roadmap
 
