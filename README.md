@@ -45,7 +45,7 @@ The app is targeted at toddlers and young kids 24 months - 4 years, especially t
     5.Animal Selection Game Page:
      •A page with five dropdowns, each containing animals from a specific category (underwater, wild animals, birds, insects, farm animals).
      •The player selects one animal from each category, and the game displays the chosen animals.
-     •Upon selecting three animals (one, two or three based on screen sizes), then user can click create story button to navigate to story page
+     •Upon selecting animals (one to five based on screen sizes), then user can click create story button to navigate to story page
     6. Story page: where user could write a story based on the selected animal in the animal seleciton game page.
 
 
