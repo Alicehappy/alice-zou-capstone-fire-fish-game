@@ -43,8 +43,6 @@ function AnimalSelectionPage() {
       try {
         const data = await fetchAnimals();
         setCategoriesWithAnimals(data);
-        console.log("animals with categories");
-        console.log(data);
       } catch (err) {
         console.error("Error fetching categories: ", err);
         setError("Failed to fetch categories");
@@ -56,7 +54,6 @@ function AnimalSelectionPage() {
   const handleAnimalSelect = (animal, categoryId) => {
     setSelectedAnimals((prev) => {
       const updated = { ...prev, [categoryId]: animal };
-      console.log("Updated selectedAnimals: ", updated);
       return updated;
     });
   };
@@ -96,11 +93,6 @@ function AnimalSelectionPage() {
                 }
                 className="animal-card__image"
               />
-              {/* {selectedAnimals[category.id] && (
-                  <p className="animal-card__name">
-                    {selectedAnimals[category.id].name}
-                  </p>
-                )} */}
             </div>
 
             <DropdownComponent

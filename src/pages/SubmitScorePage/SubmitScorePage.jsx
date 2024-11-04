@@ -55,7 +55,7 @@ function SubmitScorePage() {
       {submissionStatus && (
         <p className="submit-score__status">{submissionStatus}</p>
       )}
-      <h2 className="submit-score__fish-title">A Sleeping Fish in Aquarium</h2>
+      <h2 className="submit-score__fish-title">A Sleeping Fish</h2>
       <FishParticlesGame className="submit-score__fish" />
     </div>
   );
