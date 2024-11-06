@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
-const PORT = import.meta.env.VITE_PORT;
 
-const VITE_API_URL = `${API_URL}:${PORT}`;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 
 export const fetchUserStories = async (user_id) => {

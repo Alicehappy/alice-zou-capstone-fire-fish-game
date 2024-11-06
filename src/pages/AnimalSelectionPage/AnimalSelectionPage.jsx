@@ -6,15 +6,14 @@ import { fetchAnimals } from "../../services/animals-api";
 import Error from "../../components/Error/Error";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
-const PORT = import.meta.env.VITE_PORT;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 const placeholders = {
-  underwater: `${API_URL}:${PORT}/images/underwater.webp`,
-  wild: `${API_URL}:${PORT}/images/wild.webp`,
-  birds: `${API_URL}:${PORT}/images/birds.webp`,
-  insects: `${API_URL}:${PORT}/images/insects.webp`,
-  farm: `${API_URL}:${PORT}/images/farm.webp`,
+  underwater: `${VITE_API_URL}/images/underwater.webp`,
+  wild: `${VITE_API_URL}/images/wild.webp`,
+  birds: `${VITE_API_URL}/images/birds.webp`,
+  insects: `${VITE_API_URL}/images/insects.webp`,
+  farm: `${VITE_API_URL}/images/farm.webp`,
 };
 
 function AnimalSelectionPage() {
@@ -81,7 +80,7 @@ function AnimalSelectionPage() {
               <img
                 src={
                   selectedAnimals[category.id]
-                    ? `${API_URL}:${PORT}${
+                    ? `${VITE_API_URL}${
                         selectedAnimals[category.id].image_url
                       }`
                     : placeholders[category.name.toLowerCase()]

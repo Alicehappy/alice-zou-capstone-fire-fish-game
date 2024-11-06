@@ -6,9 +6,6 @@ import { saveScore } from "../../services/scoreboard-api";
 import PeacefulBubblesParticles from "../../components/PeacefulBubblesParticles/PeacefulBubblesParticles";
 import FishParticlesGame from "../../components/FishParticlesGame/FishParticlesGame";
 
-const port = import.meta.env.VITE_PORT;
-const backendURL = import.meta.env.VITE_BACKEND_URL;
-
 function SubmitScorePage() {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState(0);

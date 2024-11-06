@@ -6,8 +6,7 @@ import { fetchUserStories, saveStory } from "../../services/stories-api";
 import Error from "../../components/Error/Error";
 import Button from "../../components/Button/Button";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
-const PORT = import.meta.env.VITE_PORT;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 function AnimalStoryPage() {
   const { state } = useLocation();
@@ -114,7 +113,7 @@ function AnimalStoryPage() {
         {animals.map((animal) => (
           <div key={animal.id} className="animal-card">
             <img
-              src={`${API_URL}:${PORT}${animal.image_url}`}
+              src={`${VITE_API_URL}${animal.image_url}`}
               alt={animal.name}
               className="animal-card__image"
             />

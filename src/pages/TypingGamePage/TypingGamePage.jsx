@@ -6,8 +6,7 @@ import "./TypingGamePage.scss";
 import Bubble from "../../components/Bubble/Bubble";
 import CoralReef from "../../components/CoralReef/CoralReef";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
-const PORT = import.meta.env.VITE_PORT;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 function TypingGamePage() {
   const [score, setScore] = useState(0);
@@ -106,7 +105,7 @@ function TypingGamePage() {
   return (
     <div
       className="game"
-      style={{ "--bg-url": `url(${API_URL}:${PORT}/images/coral_reef.webp)` }}
+      style={{ "--bg-url": `url(${VITE_API_URL}/images/coral_reef.webp)` }}
     >
       <h1 className="game__detail game__detail--score">Score: {score}</h1>
       <h2 className="game__detail game__detail--timing">
