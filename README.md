@@ -1,3 +1,5 @@
+The project is deployed here: https://gilded-gumption-2ec107.netlify.app/
+
 ## Run the project
 Capstone frontend repo work together with Capstone backend repo:
 https://github.com/Alicehappy/alice-zou-capstone-fire-fish-game-api
